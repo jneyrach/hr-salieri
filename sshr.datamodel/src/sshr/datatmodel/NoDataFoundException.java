@@ -1,0 +1,1 @@
+package sshr.datamodel;public final class NoDataFoundException extends Exception {	public NoDataFoundException() {			super();	}	public NoDataFoundException(String msg) {			super(msg);	}	public NoDataFoundException(Throwable t) {			super(t);	}	public NoDataFoundException(String msg, Throwable t) {			super(msg, t);	}}

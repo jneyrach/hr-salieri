@@ -1,0 +1,20 @@
+@import url('nanoscroller.css');
+
+body {
+	background: #272f32;
+	font: 12px/18px tahoma, sans-serif;
+	color: white;
+}
+
+.cell-table {
+    display:table;
+    border-collapse:collapse;
+}
+
+.cell-row {
+    display:table-row;
+}
+
+.cell-content {
+    display:table-cell;
+}

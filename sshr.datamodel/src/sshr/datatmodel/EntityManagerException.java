@@ -1,0 +1,1 @@
+package sshr.datamodel;public final class EntityManagerException extends Exception {	public EntityManagerException() {			super();	}	public EntityManagerException(String msg) {			super(msg);	}	public EntityManagerException(Throwable t) {			super(t);	}	public EntityManagerException(String msg, Throwable t) {			super(msg, t);	}}
