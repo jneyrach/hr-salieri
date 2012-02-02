@@ -1,0 +1,1 @@
+package sshr.asistencia;public final class AsistenciaException extends Exception {	public AsistenciaException() {			super();	}	public AsistenciaException(String msg) {			super(msg);	}	public AsistenciaException(Throwable t) {			super(t);	}	public AsistenciaException(String msg, Throwable t) {			super(msg, t);	}}

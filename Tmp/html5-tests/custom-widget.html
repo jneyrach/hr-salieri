@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="ISO-8859-1" />
+	
+		<link rel="stylesheet" href="layout.css" type="text/css" />
+	
+		<script src="jquery-1.7.1.min.js" type="text/javascript">
+		</script>
+		<script type="text/javascript" src="jquery.lionbars.0.3.js">
+		  </script>
+		  <script src="jquery-ui-1.8.17.custom.min.js" type="text/javascript">
+		</script>
+		  <script src="jquery.ui.core.js" type="text/javascript">
+		</script>
+		  <script src="jquery.ui.widget.js" type="text/javascript">
+		</script>
+		  <script src="jquery.ui.mouse.js" type="text/javascript">
+		</script>	
+	
+		<script>
+				$(function() {
+								var myPrototype={
+									  options:{level:1},
+									  setLevel:function(level){this.options.level=level;},
+									  getLevel: function () { return this.options.level; },
+									  _init: function() { this._mouseInit();},
+									   
+									   
+									  destroy: function() {
+									   this._mouseDestroy();
+									   return this;
+									  },
+									   
+									  _mouseCapture: function(event) {
+									   //alert("inside capture: x("+event.pageX +") y("+event.pageY+")" );
+									   return true;
+									  },
+									   
+									  _mouseStart: function(event) {
+									   //alert("inside start: x("+event.pageX +") y("+event.pageY+")" );
+									   return true;
+									  },
+									   
+									  _mouseDrag: function(event) {
+									   //alert("inside drag: x("+event.pageX +") y("+event.pageY+")" );
+									   return false;
+									  },
+									   
+									  _mouseStop: function(event) {
+									   //alert("inside stop: x("+event.pageX +") y("+event.pageY+")" );
+									   return false;
+									  }
+									   
+								};
+      
+								$.widget("ui.myWidget",  $.ui.mouse,myPrototype);
+		
+								//$.widget("ui.myWidget",myPrototype);
+								
+								$("div").myWidget();
+
+								$("div").click(function(){
+									   
+									  $(this).myWidget("setLevel",4);
+									   
+									  alert($(this).myWidget("getLevel"));
+								});								
+								
+				});
+
+		</script>
+	</head>
+
+	<body>
+			<div class="demo">
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+				<div style="width:300px; position:relative;">
+					<div class="cell-table">
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Código:</span>
+							  <span>GRPDEFA</span>
+							  <span>Nombre</span>
+							  <span>Grupo Genérico</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Este es el grupo genérico al que pertenecen todos los empleados.</span>
+							</div>
+						</div>
+						<div class="cell-row">
+							<div class="cell-content">
+							  <span>Creado:</span>
+							  <span>01.01.2012</span>
+							  <span>Ultima actualización:</span>
+							  <span>01.03.2012</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div style="width:300px; position:relative;">
+					<hr></hr>
+				</div>
+			</div>
+	</body>
+
+	<script>
+			$(".demo").lionbars();
+	</script>
+	
+</html>

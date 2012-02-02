@@ -1,0 +1,1 @@
+package sshr.datamodel;public final class NotEnoughtParsException extends Exception {	public NotEnoughtParsException() {			super();	}	public NotEnoughtParsException(String msg) {			super(msg);	}	public NotEnoughtParsException(Throwable t) {			super(t);	}	public NotEnoughtParsException(String msg, Throwable t) {			super(msg, t);	}}

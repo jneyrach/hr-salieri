@@ -1,0 +1,1 @@
+package sshr.eventmodel;import java.util.EventListener;public interface EventHandler extends EventListener {	public String getEvtHandlerID();        public <T extends BaseEvent> void fireEvent(T evt) throws EventValidationException;		public <T extends BaseEvent> void reportError(T evt);    }
