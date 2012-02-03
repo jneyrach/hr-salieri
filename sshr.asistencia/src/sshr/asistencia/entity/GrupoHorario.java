@@ -2,6 +2,8 @@ package sshr.asistencia.entity;
 
 import sshr.datamodel.jpa.BaseDataEntity;
 
+import java.util.Date;
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -20,6 +22,9 @@ public final class GrupoHorario extends BaseDataEntity<sshr.domainmodel.asistenc
 	private String _desc;
 	private String _codigo;
 	
+	private Date _createdOn;
+	private Date _updatedOn;
+
 	
 	public Long getId() {
 	
@@ -51,13 +56,25 @@ public final class GrupoHorario extends BaseDataEntity<sshr.domainmodel.asistenc
 		this._id = id;
 	}
 	
+    public void setCreatedOn(Date createdOn) {
+    
+        this._createdOn = createdOn;  
+    }
+
+    public void setUpdatedOn(Date updatedOn) {
+    
+        this._updatedOn = updatedOn;  
+    }
+	
 
 	@Override
 	public void autoPopulate(sshr.domainmodel.asistencia.GrupoHorario ghvo) {
 	
-		this._id     = ghvo.getId();
-		this._desc   = ghvo.getDesc();
-		this._codigo = ghvo.getCodigo();
+		this._id        = ghvo.getId();
+		this._desc      = ghvo.getDesc();
+		this._codigo    = ghvo.getCodigo();
+		this._createdOn = ghvo.getCreatedOn();
+		this._updatedOn = ghvo.getUpdatedOn();
 	}
 
 	@Override
@@ -66,6 +83,8 @@ public final class GrupoHorario extends BaseDataEntity<sshr.domainmodel.asistenc
 		ghvo.setId(this._id);
 		ghvo.setCodigo(this._codigo);
 		ghvo.setDesc(this._desc);
+		ghvo.setCreatedOn(this._createdOn);
+		ghvo.setUpdatedOn(this._updatedOn);
 		
 		return ghvo;
 	}

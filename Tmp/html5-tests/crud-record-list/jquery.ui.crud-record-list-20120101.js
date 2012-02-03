@@ -30,14 +30,24 @@
 			getRecords             : function() {return this.options.records;},
 			getEvtRowSelected      : function() {return this.options.evtRowSelected;},
 
+			
+			unloadData: function() {
+			
+				$("#" + this.options.contentDivID).html("");
+			},
 					
 			repaint: function() {
 			
 				$("#" + this.options.contentDivID).html("");
+			
+				for (i = 0; i < this.options.records.dataRows.length; i++) {
 
-				for (i = 0; i < this.options.records.rows.dataRows.length; i++) {
-				
-					var record    = $("<div onclick=\"" + this.options.evtRowSelected + "('" + this.options.records.rows.keyRows[i][0] + "');\" style='width:" + this.options.contentWidthInPixels + "px; position:relative;'></div>");
+					var thekeys = "'" + this.options.records.keyRows[i][0] + "'";
+					for (c = 1; c < this.options.records.columns.length; c++) {
+					     thekeys = thekeys + ",'" + this.options.records.keyRows[i][c] + "'";
+					}
+
+					var record    = $("<div onclick=\"" + this.options.evtRowSelected + "(" + thekeys + ");\" style='width:" + this.options.contentWidthInPixels + "px; position:relative;'></div>");
 					var separator = $("<div style='width:" + this.options.contentWidthInPixels + "px; position:relative;'><hr></hr></div>");
 					var cell      = $("<div class='cell-table'></div>");
 					var row       = $("<div class='cell-row'></div>");
@@ -46,7 +56,7 @@
 					for (c = 0; c < this.options.records.columns.length; c++) {
 					
 							var fieldName  = $("<span>" + this.options.records.columns[c] + ":</span>");
-							var fieldValue = $("<span>" + this.options.records.rows.dataRows[i][c] + "</span>");
+							var fieldValue = $("<span>" + this.options.records.dataRows[i][c] + "</span>");
 						
 							content.append(fieldName);
 							content.append(fieldValue);
@@ -62,7 +72,6 @@
 				}
 				
 				$("#" + this.options.mainDivID).nanoScroller({scrollTop: 10});
-				//$("#" + this.options.mainDivID).nanoScroller({scroll:'top'});
 			},
 			
 			_create: function() { }
