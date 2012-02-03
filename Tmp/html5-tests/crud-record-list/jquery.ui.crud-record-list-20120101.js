@@ -12,31 +12,32 @@
 				contentWidthInPixels    : "",
 				contentDivID            : "",
 				mainDivID               : "",
+				evtRowSelected          : "",
 				records                 : { }
 			},
-			
+
+			// Setters
 			setContentDivID        : function(value) {this.options.contentDivID = value;},
 			setMainDivID           : function(value) {this.options.mainDivID = value;},
 			setContentWidthInPixels: function(value) {this.options.contentWidthInPixels = value;},
 			setRecords             : function(value) {this.options.records = value;},
+			setEvtRowSelected      : function(value) {this.options.evtRowSelected = value;},
 
+			// Getters
 			getContentDivID        : function() {return this.options.contentDivID;},
 			getMainDivID           : function() {return this.options.mainDivID;},
 			getContentWidthInPixels: function() {return this.options.contentWidthInPixels;},
 			getRecords             : function() {return this.options.records;},
-					
-			unloadData: function() {
-			
-				$("#" + this.options.contentDivID).html("");
-			},
+			getEvtRowSelected      : function() {return this.options.evtRowSelected;},
+
 					
 			repaint: function() {
 			
 				$("#" + this.options.contentDivID).html("");
-			
+
 				for (i = 0; i < this.options.records.rows.dataRows.length; i++) {
 				
-					var record    = $("<div onclick=\"alert('');\" style='width:" + this.options.contentWidthInPixels + "px; position:relative;'></div>");
+					var record    = $("<div onclick=\"" + this.options.evtRowSelected + "('" + this.options.records.rows.keyRows[i][0] + "');\" style='width:" + this.options.contentWidthInPixels + "px; position:relative;'></div>");
 					var separator = $("<div style='width:" + this.options.contentWidthInPixels + "px; position:relative;'><hr></hr></div>");
 					var cell      = $("<div class='cell-table'></div>");
 					var row       = $("<div class='cell-row'></div>");
@@ -55,17 +56,16 @@
 					cell.append(row);
 					record.append(cell);
 
-					record.onclick = function () { alert('here'); };
-					
+					// Adds a new record within the css table
 					$("#" + this.options.contentDivID).append(record);
 					$("#" + this.options.contentDivID).append(separator);
-					$("#" + this.options.mainDivID).nanoScroller();
 				}
+				
+				$("#" + this.options.mainDivID).nanoScroller({scrollTop: 10});
+				//$("#" + this.options.mainDivID).nanoScroller({scroll:'top'});
 			},
 			
-			_create: function() {
-										
-			}
+			_create: function() { }
 					
 	};
 

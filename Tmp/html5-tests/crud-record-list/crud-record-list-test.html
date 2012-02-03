@@ -58,44 +58,83 @@
                                                 ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"],
                                                 ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"]  ],
                                     keyRows:  [ ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"],
-									            ["1"]  ]
+									            ["2"],
+									            ["3"],
+									            ["4"],
+									            ["5"],
+									            ["6"],
+									            ["7"],
+									            ["8"],
+									            ["9"],
+									            ["10"],
+									            ["11"],
+									            ["12"],
+									            ["13"],
+									            ["14"],
+									            ["15"],
+									            ["16"],
+									            ["17"],
+									            ["18"],
+									            ["19"],
+									            ["20"]  ]
 								}
 				};
 	
+				var records2 = {
+						columns : ["Código", "Nombre", "Creado", "Ultima actualización"],
+						keys    : ["ID"],
+						rows    : { dataRows: [ ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"],
+                                                ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"],
+                                                ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"],
+                                                ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"],
+                                                ["GRPDEFA", "Grupo Genérico", "01.01.2012", "01.01.2012"]  ],
+                                    keyRows:  [ "1",
+									            "2",
+									            "3",
+									            "4",
+									            "20"  ]
+								}
+				};
 	
 
 			// The creation
-			$("#list1").classCrudRecordList();
+			var list = $("#list1").classCrudRecordList();
 			
 			// The setup
-			$("#list1").classCrudRecordList("setContentWidthInPixels", "280");
-			$("#list1").classCrudRecordList("setContentDivID", "listcontent");
-			$("#list1").classCrudRecordList("setMainDivID", "list1");
-			$("#list1").classCrudRecordList("setRecords", records);
+			list.classCrudRecordList("setContentWidthInPixels", "280");
+			list.classCrudRecordList("setContentDivID", "listcontent");
+			list.classCrudRecordList("setMainDivID", "list1");
+			list.classCrudRecordList("setRecords", records);
+			list.classCrudRecordList("setEvtRowSelected", "testclick");
 
 			// The painting of data
-			$("#list1").classCrudRecordList("repaint");
+			list.classCrudRecordList("repaint");
 
 			
+			
+			
+			function testclick(a) {
+			
+				list.classCrudRecordList("setEvtRowSelected", "testclick2");
+				
+				list.classCrudRecordList("setRecords", records2);
 
+				list.classCrudRecordList("repaint");				
+				
+				return true;
+			}
+			
+			function testclick2(a) {
+			
+				list.classCrudRecordList("setEvtRowSelected", "testclick");
+				
+				list.classCrudRecordList("setRecords", records);
+
+				list.classCrudRecordList("repaint");				
+				
+				return true;
+			}
+			
 	</script>
 	
 </html>
