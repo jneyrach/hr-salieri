@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+   
+  <persistence-unit name="AsistenciaPU" transaction-type="RESOURCE_LOCAL">
+  
+<!--
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+ -->
+    <non-jta-data-source>java:/jdbc/airhweb_dgac</non-jta-data-source>
+     
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.HojaTiempoHorarioTeorico</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.AjusteHorarioReal</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.AjusteHorarioTeorico</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.Calendario</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.CentroTrabajo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.Comuna</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.DefinicionCalendario</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.DiaFestivo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.EncargadoCentroTrabajo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.HojaTiempoHorarioReal</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.Horario</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.Persona</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.PersonaBase</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.PersonaExterna</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoAjusteHojaTiempo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoAtraso</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoAusentismo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoContrato</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoDia</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoHora</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoJustificacion</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.TipoSobretiempo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.UbicacionGeografica</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.UnidadOrganizacional</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.UnidadOrganizacionalPadre</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.RelacionUnidadPadreUnidadHija</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.DefinicionHorario</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.RelacionCentrotrabajoUnidad</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.GrupoHorarioCentroTrabajo</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.MiembroGrupoHorario</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.SolicitudJustificacion</class>
+    <class>com.synapsis.rrhh.asistencia.persistence.pojo.AccesoUsuario</class>
+    
+        
+    <properties>
+      <!--
+      <property name="hibernate.connection.username" value="airh"/>
+      <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+      <property name="hibernate.connection.password" value="airh"/>
+      <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="show_sql" value="true"/>
+      -->
+      <!--
+      <property name="hibernate.connection.username" value="DGAC_DESA_RRHH"/>
+      <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+      <property name="hibernate.connection.password" value="syndgac2010"/>
+      <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//10.33.50.120:1521/orcldesa"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.show_sql" value="true"/>
+      -->
+			<property name="hibernate.cache.use_second_level_cache" value="false"/>
+			<property name="hibernate.cache.use_query_cache" value="false"/>    		      
+    </properties>
+      
+  </persistence-unit>
+</persistence>
