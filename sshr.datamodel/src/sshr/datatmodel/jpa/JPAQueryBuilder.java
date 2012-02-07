@@ -8,7 +8,9 @@ import javax.persistence.Query;
 
 public abstract class JPAQueryBuilder {
 
-    public static Query buildJPS20Query(Query tmpQry, EntityQuery qryDef, Object... pars) {
+    public static Query buildJPA20Query(EntityQuery qryDef, Object... pars) {
+
+		Query tmpQry = null;
 
         try {
                 if (qryDef.getParameters().size() > 0) {
@@ -43,14 +45,13 @@ public abstract class JPAQueryBuilder {
 						throw new NotEnoughtParsException(msg.toString());
 					}
                     
+					tmpQry = JPAEntityManager.createEBJQuery( qryDef.getQryText() );
+					
                     for (EntityQueryParameter p : qryDef.getParameters())
 							tmpQry.setParameter(p.getParName(), pars[p.getParOrdinal()] );
                 
                 }
             
-        } catch (Exception ex) {
-		
-					tmpQry = null;
         } finally {
 		
                     return tmpQry;    

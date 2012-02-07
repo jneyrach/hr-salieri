@@ -11,10 +11,15 @@ import sshr.datamodel.EntityQuery;
 import sshr.datamodel.EntityManager;
 import sshr.datamodel.NoDataFoundException;
 import sshr.datamodel.EntityManagerException;
+import sshr.datamodel.QueryCatalog;
 import sshr.datamodel.jpa.JPAEntityManager;
 import sshr.datamodel.jpa.BaseDataEntity;
+import sshr.datamodel.jpa.JPAQueryBuilder;
 
 import java.util.List;
+import java.util.ArrayList;
+
+import javax.persistence.Query;
 
 
 public final class AsistenciaEntityManager implements EntityManager {
@@ -74,15 +79,41 @@ public final class AsistenciaEntityManager implements EntityManager {
 	}
 
 	@Override
-	public <T extends BaseEntity> List<T> findAll(Class<T> entityClass) throws EntityManagerException {
+	public <T extends BaseEntity> List<T> performQuery(QueryCatalog qrySpec, Class<T> entityClass, Object... pars) throws EntityManagerException {
 	
-		return null;
+		try {
+				EntityQuery qs = qrySpec.getQuerySpecification();
+				
+				Query qry = JPAQueryBuilder.buildJPA20Query( qs, pars );
+			
+				Class cls = DataEntityFactory.Instance.getClassDataEntity( entityClass );
+			
+				List<T> tmp = new ArrayList<T>();
+				//for (U de: JPAEntityManager.getListByQueryObject( qry, cls ))
+					//tmp.add( (T)de.reversePopulate() );
+					
+				return tmp;
+					
+		//} catch (NoDataFoundException ex) {
+		} catch (Exception ex) {
+		
+					throw new EntityManagerException("No records were found.", ex);
+		}
 	}
-
-	@Override
-	public <T extends BaseEntity> List<T> performQuery(EntityQuery qryDef, Object... pars) throws EntityManagerException {
 	
-		return null;
+	/*
+	private <T extends BaseEntity, U extends BaseDataEntity> T convertToDomainEntity(U bde) {
+	
+		T de;
+		try {
+				de = EntityFactory.Instance.getNewEntity( eClass );
+				
+		} catch (Exception ex) {
+			
+					throw new EntityManagerException(ex);
+		}
+	
+		de = (T)bde.reversePopulate( de );
 	}
-
+	*/
 }
