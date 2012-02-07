@@ -89,24 +89,26 @@ public final class AsistenciaEntityManager implements EntityManager {
 				Class cls = DataEntityFactory.Instance.getClassDataEntity( entityClass );
 			
 				List<T> tmp = new ArrayList<T>();
-				//for (U de: JPAEntityManager.getListByQueryObject( qry, cls ))
-					//tmp.add( (T)de.reversePopulate() );
+				
+				List<BaseDataEntity> lbde = JPAEntityManager.getListByQueryObject( qry, cls );
+				
+				for (BaseDataEntity bde: lbde)
+						tmp.add( convertToDomainEntity( bde, entityClass) );
+					
 					
 				return tmp;
 					
-		//} catch (NoDataFoundException ex) {
-		} catch (Exception ex) {
+		} catch (NoDataFoundException ex) {
 		
 					throw new EntityManagerException("No records were found.", ex);
 		}
 	}
 	
-	/*
-	private <T extends BaseEntity, U extends BaseDataEntity> T convertToDomainEntity(U bde) {
+	private <T extends BaseEntity, U extends BaseDataEntity> T convertToDomainEntity(U bde, Class<T> entityClass) throws EntityManagerException {
 	
 		T de;
 		try {
-				de = EntityFactory.Instance.getNewEntity( eClass );
+				de = EntityFactory.Instance.getNewEntity( entityClass );
 				
 		} catch (Exception ex) {
 			
@@ -114,6 +116,8 @@ public final class AsistenciaEntityManager implements EntityManager {
 		}
 	
 		de = (T)bde.reversePopulate( de );
+		
+		return de;
 	}
-	*/
+
 }
