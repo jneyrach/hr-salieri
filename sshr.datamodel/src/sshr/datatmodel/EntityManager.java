@@ -17,8 +17,6 @@ public interface EntityManager {
 
 	public <T extends BaseEntity, U extends Number> T find(Class<T> eClass, U id) throws EntityManagerException, NoDataFoundException;
 
-	public <T extends BaseEntity> List<T> findAll(Class<T> entityClass) throws EntityManagerException;
-
-	public <T extends BaseEntity> List<T> performQuery(EntityQuery qryDef, Object... pars) throws EntityManagerException;
+	public <T extends BaseEntity> List<T> performQuery(QueryCatalog qrySpec, Class<T> eClass, Object... pars) throws EntityManagerException;
 	
 }
