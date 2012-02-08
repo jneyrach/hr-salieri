@@ -50,6 +50,6 @@ cd ..
 cd sshr.gae-web-interface
 erase war\WEB-INF\classes\* /s /q
 erase war\WEB-INF\lib\* /s /q
-erase war\WEB-INF\appengine-generated\* /s /q
+rem erase war\WEB-INF\appengine-generated\* /s /q
 cd ..
 

@@ -82,18 +82,20 @@ public final class AsistenciaEntityManager implements EntityManager {
 	public <T extends BaseEntity> List<T> performQuery(QueryCatalog qrySpec, Class<T> entityClass, Object... pars) throws EntityManagerException {
 	
 		try {
-				EntityQuery qs = qrySpec.getQuerySpecification();
-				
+				EntityQuery qs = qrySpec.getQuerySpecification(entityClass);
+System.out.println("EntityQuery qs: " + qs);
 				Query qry = JPAQueryBuilder.buildJPA20Query( qs, pars );
-			
+System.out.println("Query qry: " + qry);
 				Class cls = DataEntityFactory.Instance.getClassDataEntity( entityClass );
-			
+System.out.println("Class cls: " + cls);
 				List<T> tmp = new ArrayList<T>();
 				
 				List<BaseDataEntity> lbde = JPAEntityManager.getListByQueryObject( qry, cls );
-				
-				for (BaseDataEntity bde: lbde)
+System.out.println("List<BaseDataEntity> lbde: " + lbde);
+				for (BaseDataEntity bde: lbde) {
+System.out.println("BaseDataEntity bde: " + bde);
 						tmp.add( convertToDomainEntity( bde, entityClass) );
+				}
 					
 					
 				return tmp;
@@ -101,6 +103,10 @@ public final class AsistenciaEntityManager implements EntityManager {
 		} catch (NoDataFoundException ex) {
 		
 					throw new EntityManagerException("No records were found.", ex);
+		} catch (Exception ex) {
+		System.out.println("*********************************************************");
+					ex.printStackTrace();
+					return null;
 		}
 	}
 	

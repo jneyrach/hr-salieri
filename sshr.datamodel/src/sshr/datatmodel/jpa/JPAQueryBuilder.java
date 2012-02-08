@@ -13,6 +13,8 @@ public abstract class JPAQueryBuilder {
 		Query tmpQry = null;
 
         try {
+				tmpQry = JPAEntityManager.createEBJQuery( qryDef.getQryText() );
+					
                 if (qryDef.getParameters().size() > 0) {
 					
 					// If no parameters provided and them are required....
@@ -45,8 +47,6 @@ public abstract class JPAQueryBuilder {
 						throw new NotEnoughtParsException(msg.toString());
 					}
                     
-					tmpQry = JPAEntityManager.createEBJQuery( qryDef.getQryText() );
-					
                     for (EntityQueryParameter p : qryDef.getParameters())
 							tmpQry.setParameter(p.getParName(), pars[p.getParOrdinal()] );
                 
