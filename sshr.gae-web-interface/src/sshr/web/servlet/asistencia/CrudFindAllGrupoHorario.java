@@ -34,7 +34,8 @@ public class CrudFindAllGrupoHorario extends HttpServlet {
 		
 		try {
 				List<GrupoHorario> lgh = AsistenciaApplication.findAllGrupoHorario();
-			
+System.out.println("servlet: List<GrupoHorario> lgh: " + lgh);			
+
 				CrudJSONTransferObject to = new CrudJSONTransferObject();
 				to.addColumn("Nombre");
 				to.addColumn("Descripción");
@@ -51,8 +52,8 @@ public class CrudFindAllGrupoHorario extends HttpServlet {
 					List<String> dr = new ArrayList<String>();
 					dr.add(gh.getDesc());
 					dr.add(gh.getCodigo());
-					dr.add(gh.getCreatedOn().toString());
-					dr.add(gh.getUpdatedOn().toString());
+					dr.add(gh.getCreatedOn() == null ? "01.01.2012" : gh.getCreatedOn().toString());
+					dr.add(gh.getUpdatedOn() == null ? "01.01.2012" : gh.getUpdatedOn().toString());
 					
 					to.addDataRow(dr);
 				}
@@ -62,7 +63,7 @@ public class CrudFindAllGrupoHorario extends HttpServlet {
 				out.println( CrudJSONHelper.serialize(to) );
 		
 		} catch (Exception ex) {
-		
+ex.printStackTrace();		
 					out.println("ERROR: " + ex.getMessage());
 		}
 		

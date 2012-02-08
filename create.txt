@@ -1,0 +1,5 @@
+http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Bandera - Guardias&codigo=BANGUA
+http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Bandera - Vendedores&codigo=BANVEN
+http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Alameda 1 - Guardias&codigo=AL1GUA
+http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Alameda 1 - Vendedores&codigo=AL1NVEN
+http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Grupo Genérico&codigo=GRPGEN

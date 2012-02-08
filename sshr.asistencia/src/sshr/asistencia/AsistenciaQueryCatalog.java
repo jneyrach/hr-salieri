@@ -7,33 +7,29 @@ import sshr.datamodel.EntityQueryParameter;
 import sshr.datamodel.jpa.BaseDataEntity;
 
 
-public enum AsistenciaQueryCatalog implements QueryCatalog {
+public abstract class AsistenciaQueryCatalog {
 
-    GENERIC___ALL() {
+    public static QueryCatalog GENERIC___ALL() {
         
-        @Override
-        public EntityQuery getQuerySpecification() { 
+		return (new QueryCatalog() {
+				@Override
+				public EntityQuery getQuerySpecification() { 
+				
+					return null;
+				}
 		
-			return null;
-		}
-		
-        @Override
-        public EntityQuery getQuerySpecification(Class<?> eclass) {
+				@Override
+				public EntityQuery getQuerySpecification(Class<?> eclass) {
 
-			EntityQuery q = new EntityQuery();
-			q.setQryText(" select o from " + eclass.getSimpleName() + " o ");
-			q.setSingleResult(false);
-			q.setEntity(eclass);
-			
-			return q;
-        }
-		
-        @Override
-        public AsistenciaQueryCatalog getQueryDefinition() {
-		
-			return this;
-		}
-    };
+					EntityQuery q = new EntityQuery();
+					q.setQryText(" select o from " + eclass.getSimpleName() + " o ");
+					q.setSingleResult(false);
+					q.setEntity(eclass);
+					
+					return q;
+				}
+		});
+    }
 
 	
  }

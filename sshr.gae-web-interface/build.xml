@@ -46,6 +46,9 @@
 			<fileset dir="${gae.dir.base}/lib/user">
 				<include name="**/*.jar" />
 			</fileset>
+			<fileset dir="../lib/">
+				<include name="**/*.jar" />
+			</fileset>
 		</copy>
 		
 		<copy todir="war/WEB-INF/classes" flatten="false">
