@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+            xmlns:s="library://ns.adobe.com/flex/spark" 
+            xmlns:mx="library://ns.adobe.com/flex/mx" 
+			
+			minWidth="955" 
+			minHeight="600"
+			initialize="initData();">
+    
+    <fx:Script> 
+        <![CDATA[ 
+            import mx.collections.*; 
+			
+            private var dgArray:Array = [ 
+                {_nombre: 'Vendedores Alameda', _codigo: 'VENAL1', _desc: 'Vendedores - Alameda'}, 
+                {_nombre: 'Vendedores Providencia', _codigo: 'VENPR1', _desc: 'Vendedores - Providencia'}
+			]; 
+            
+            [Bindable] 
+            public var initDG:ArrayCollection; 
+            
+            // Initialize initDG variable from the Array. 
+            public function initData():void { 
+                initDG = new ArrayCollection(dgArray); 
+            } 
+        ]]> 
+    </fx:Script> 
+    
+    <s:DataGrid x="5" y="30" id="grdGruposHorario" dataProvider="{initDG}">
+        <s:columns>
+            <s:ArrayList>
+                <s:GridColumn dataField="_nombre" headerText="Nombre"/>
+                <s:GridColumn dataField="_codigo" headerText="Código"/>
+                <s:GridColumn dataField="_desc"   headerText="Descripción"/>
+            </s:ArrayList>
+        </s:columns>
+	</s:DataGrid>
+		
+   <s:Label x="5" y="5" color="maroon" fontSize="20" fontWeight="bold" text="SSHR Asistencia - Mantenedores"/>
+   
+</s:Application>
