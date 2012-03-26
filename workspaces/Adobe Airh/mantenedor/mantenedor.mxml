@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- dpcontrols\sparkdpcontrols\SparkDGXMLData.mxml -->
+<s:Application
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    width="1000" 
+	creationComplete="test_data()">
+	
+    <fx:Script> 
+        <![CDATA[ 
+					import mx.controls.Alert; 
+					import mx.rpc.http.*; 
+					import mx.rpc.events.*; 
+					import mx.collections.*;
+					
+					[Bindable]
+					public var xmlXMLListCollection:XMLListCollection;
+					
+					[Bindable]
+					public var xmlData:XML;
+			
+					private function test_data():void 
+					{ 
+						userRequest.addEventListener("result", httpResult); 
+						userRequest.addEventListener("fault", httpFault); 
+						userRequest.send();
+					} 
+					
+					public function httpResult(event:ResultEvent):void { 
+						
+						xmlData = new XML("<root><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow></root>");
+					} 
+		 
+					public function httpFault(event:FaultEvent):void { 
+						var faultstring:String = event.fault.faultString; 
+						Alert.show(faultstring); 
+					} 
+		]]> 
+    </fx:Script> 
+
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+	
+    <fx:Declarations> 
+        <s:HTTPService id="userRequest" url="http://localhost:8080/" useProxy="false" method="GET"> 
+            <mx:request xmlns="">
+			</mx:request>         
+        </s:HTTPService> 
+    </fx:Declarations>
+
+	
+    <mx:DataGrid id="gridGrupoHorario" dataProvider="{xmlData.dataRow}" width="900">
+        <mx:columns>
+			<mx:DataGridColumn dataField="nombre"      headerText="Nombre"/>
+			<mx:DataGridColumn dataField="codigo"      headerText="Código"/>
+			<mx:DataGridColumn dataField="desc"        headerText="Descripción"/>
+			<mx:DataGridColumn dataField="creado"      headerText="Fecha Creación"/>
+			<mx:DataGridColumn dataField="actualizado" headerText="Fecha Actualización"/>
+        </mx:columns>
+    </mx:DataGrid>
+    
+    <s:Form>
+        <s:FormItem label="Nombre">
+            <s:Label text="{gridGrupoHorario.selectedItem.nombre}"/>
+        </s:FormItem>
+    </s:Form>
+</s:Application>
