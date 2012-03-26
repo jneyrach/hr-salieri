@@ -1,6 +1,6 @@
 package sshr.web.servlet.asistencia;
 
-import sshr.web.servlet.asistencia.CrudJSONTransferObject;
+import sshr.web.servlet.asistencia.CrudTransferObject;
 
 import flexjson.JSONSerializer;
 
@@ -11,12 +11,12 @@ public abstract class CrudJSONHelper {
 
 		JSONSerializer serializer = new JSONSerializer();
 
-		for (CrudJSONTransferObject.SKIP_FIELDS k: CrudJSONTransferObject.SKIP_FIELDS.values())
+		for (CrudTransferObject.SKIP_FIELDS k: CrudTransferObject.SKIP_FIELDS.values())
 				serializer.exclude(k.toString());
-		
-		
+
+
         return serializer.serialize( entity );
-	
+
 	}
 
 }

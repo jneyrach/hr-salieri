@@ -3,11 +3,13 @@
             xmlns:s="library://ns.adobe.com/flex/spark" 
             xmlns:mx="library://ns.adobe.com/flex/mx" 
             xmlns:mirh="customlist.*"
-		minWidth="480" 
-		minHeight="800" >
+		minWidth="500" 
+		minHeight="100" >
     
-	<fx:Declarations>
-		<mirh:AS3ScrollingList id="m1" />
-	</fx:Declarations>
-	
+   <s:layout>
+       <s:BasicLayout/>
+   </s:layout>
+    
+   <mirh:CustomListContainer id="mfc" x="10" y="10"/>
+   
 </s:Application>
