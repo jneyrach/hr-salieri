@@ -5,7 +5,9 @@ import java.io.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
+
+
 
 public class JavaToXMLDemo {
   public static void main(String[] args) throws Exception {
@@ -19,15 +21,15 @@ public class JavaToXMLDemo {
     object.setName("Cath");
     object.setSalary(300);
 
-	List<Date> lst = new ArrayList<Date>();
-	lst.add(new Date());
-	lst.add(new Date());
-	lst.add(new Date());
-	lst.add(new Date());
-	lst.add(new Date());
-	lst.add(new Date());
-	lst.add(new Date());
-	lst.add(new Date());
+	List<CompObj> lst = new ArrayList<CompObj>();
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
+	lst.add(new CompObj(0, "XXX"));
 
     object.setLst(lst);
 
@@ -52,9 +54,11 @@ class Employee {
 
   private int salary;
 
-  private List<Date> lst = new ArrayList<Date>();
+  private List<CompObj> lst = new ArrayList<CompObj>();
 
-  public List<Date> getLst() {return lst;}
+  @XmlElementWrapper(name = "DataRows")
+  @XmlElement(name = "DataRow")
+  public List<CompObj> getLst() {return lst;}
 
   public String getCode() {
     return code;
@@ -80,7 +84,31 @@ class Employee {
     this.salary = population;
   }
 
-  public void setLst(List<Date> l) {
+  public void setLst(List<CompObj> l) {
     this.lst = l;
   }
+}
+
+
+class CompObj {
+
+	private int intv;
+	private String strv;
+
+
+	public CompObj() {}
+
+	public CompObj(int intv, String strv) {
+
+		this.intv = intv;
+		this.strv = strv;
+	}
+
+
+	public void setIntv(int intv) {this.intv = intv;}
+	public void setStrv(String strv) {this.strv = strv;}
+
+	public int getIntv() {return this.intv;}
+	public String getStrv() {return this.strv;}
+
 }

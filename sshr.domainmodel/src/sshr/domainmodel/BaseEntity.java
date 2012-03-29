@@ -10,6 +10,7 @@ import javax.xml.bind.*;
 import javax.xml.bind.annotation.*;
 
 
+
 public abstract class BaseEntity <ID extends Number> implements Serializable {
 
     private ID   _id;
@@ -27,19 +28,19 @@ public abstract class BaseEntity <ID extends Number> implements Serializable {
 	}
 
 
-	@XmlElement
+	//@XmlValue
     public ID getID() {
 
         return this._id;
     }
 
-	@XmlElement
+	//@XmlValue
     public Date getCreatedOn() {
 
         return this._createdOn;
     }
 
-	@XmlElement
+	//@XmlValue
     public Date getUpdatedOn() {
 
         return this._updatedOn;

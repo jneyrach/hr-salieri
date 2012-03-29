@@ -36,14 +36,12 @@ public class CrudFindAllGrupoHorario extends HttpServlet {
 				List<GrupoHorario> lgh = AsistenciaApplication.findAllGrupoHorario();
 
 
-						CrudXMLTransferObject<GrupoHorario> to = new CrudXMLTransferObject<GrupoHorario>();
-						to.setDataRows(lgh);
-System.out.println("******************************************");
-System.out.println(CrudXMLHelper.marshal(lgh));
-
-						out.println( CrudXMLHelper.marshal(lgh) );
 				if (request.getParameter("format").equals("XML")) {
 
+						CrudXMLTransferObject<GrupoHorario> to = new CrudXMLTransferObject<GrupoHorario>();
+						to.setDataRows(lgh);
+
+						out.println( CrudXMLHelper.marshal(to) );
 				}
 
 

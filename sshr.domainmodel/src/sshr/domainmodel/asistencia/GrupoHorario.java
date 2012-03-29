@@ -7,6 +7,7 @@ import javax.xml.bind.*;
 import javax.xml.bind.annotation.*;
 
 
+
 public final class GrupoHorario extends BaseEntity<Long> {
 
 	private String _nombre;
@@ -133,19 +134,19 @@ public final class GrupoHorario extends BaseEntity<Long> {
 	}
 
 
-	@XmlElement
+
 	public String getDesc() {
 
 		return this._desc;
 	}
 
-	@XmlElement
+
 	public String getCodigo() {
 
 		return this._codigo;
 	}
 
-	@XmlElement
+
 	public String getNombre() {
 
 		return this._nombre;
