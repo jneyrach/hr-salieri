@@ -80,7 +80,7 @@
 				<exclude name="**/*.java" />
 			</fileset>
 		</copy>
-		<javac srcdir="src" destdir="war/WEB-INF/classes" classpathref="project.classpath"/>
+		<javac srcdir="src" destdir="war/WEB-INF/classes" classpathref="project.classpath" debug="on"/>
 	</target>
 
 	<target name="datanucleusenhance" depends="compile"	description="Performs JDO enhancement on compiled data classes.">

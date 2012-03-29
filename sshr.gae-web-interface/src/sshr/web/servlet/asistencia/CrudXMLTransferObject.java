@@ -9,14 +9,14 @@ import javax.xml.bind.*;
 import javax.xml.bind.annotation.*;
 
 
-@XmlRootElement//(name = "Root")
+@XmlRootElement(name = "Root", namespace = "http://www.w3.org/2001/XMLSchema")
 public final class CrudXMLTransferObject <T extends BaseEntity> {
 
 	private List<T> _dataRows = new ArrayList<T>();
 	private String  _dummy    = "XXX";
 
 
-	//@XmlElement(name = "DataRow")
+	@XmlElementWrapper(name = "DataRows")
 	public List<T> getDataRows() {
 
 		return this._dataRows;
@@ -26,6 +26,7 @@ public final class CrudXMLTransferObject <T extends BaseEntity> {
 
 		this._dataRows = dataRows;
 	}
+
 
 	public String getDummy() {
 
