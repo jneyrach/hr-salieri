@@ -16,7 +16,7 @@ public abstract class CrudXMLHelper {
 	private static Marshaller   _m;
 	private static StringWriter _sw;
 
-
+/*
 	static {
 		try {
 				_context = JAXBContext.newInstance( CrudXMLTransferObject.class );
@@ -26,11 +26,16 @@ public abstract class CrudXMLHelper {
 
 		} catch (Exception ex) { }
 	}
+*/
 
-
-	public static String marshal(CrudXMLTransferObject entity) {
+	public static <T extends BaseEntity> String marshal(CrudTransferObject<T> entity) {
 
 		try {
+				_context = JAXBContext.newInstance( entity.getClass() );
+				_m       = _context.createMarshaller();
+
+    			_m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
 				_sw = new StringWriter();
 
 				_m.marshal( entity, _sw );
@@ -40,8 +45,7 @@ public abstract class CrudXMLHelper {
 
 		} catch (Exception ex) {
 
-					ex.printStackTrace();
-					return "EEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRR";
+					throw new RuntimeException(ex);
 		}
 	}
 

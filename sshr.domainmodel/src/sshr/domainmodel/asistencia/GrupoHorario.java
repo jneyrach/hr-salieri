@@ -3,11 +3,10 @@ package sshr.domainmodel.asistencia;
 import sshr.domainmodel.BaseEntity;
 import sshr.domainmodel.EntityAccessNotAllowedException;
 
-import javax.xml.bind.*;
 import javax.xml.bind.annotation.*;
 
 
-
+@XmlRootElement
 public final class GrupoHorario extends BaseEntity<Long> {
 
 	private String _nombre;
@@ -15,6 +14,7 @@ public final class GrupoHorario extends BaseEntity<Long> {
 	private String _desc;
 
 
+    @XmlTransient
 	public enum FIELDS {
 
         _ID() {
@@ -132,7 +132,6 @@ public final class GrupoHorario extends BaseEntity<Long> {
 
 		super();
 	}
-
 
 
 	public String getDesc() {

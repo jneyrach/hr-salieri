@@ -1,22 +1,22 @@
 package sshr.domainmodel;
 
-import java.util.Date;
-
-import java.io.Serializable;
-
-import java.lang.reflect.Constructor;
+import sshr.domainmodel.util.XmlJAXBDateAdapter;
 
 import javax.xml.bind.*;
 import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.*;
 
+import java.util.*;
+import java.io.*;
+import java.lang.reflect.*;
 
 
 public abstract class BaseEntity <ID extends Number> implements Serializable {
 
-    private ID   _id;
+    protected ID   _id;
 
-	private Date _createdOn;
-	private Date _updatedOn;
+	protected Date _createdOn;
+	protected Date _updatedOn;
 
 
 	protected BaseEntity() throws EntityAccessNotAllowedException {
@@ -28,19 +28,18 @@ public abstract class BaseEntity <ID extends Number> implements Serializable {
 	}
 
 
-	//@XmlValue
     public ID getID() {
 
         return this._id;
     }
 
-	//@XmlValue
+	@XmlJavaTypeAdapter(XmlJAXBDateAdapter.class)
     public Date getCreatedOn() {
 
         return this._createdOn;
     }
 
-	//@XmlValue
+	@XmlJavaTypeAdapter(XmlJAXBDateAdapter.class)
     public Date getUpdatedOn() {
 
         return this._updatedOn;
