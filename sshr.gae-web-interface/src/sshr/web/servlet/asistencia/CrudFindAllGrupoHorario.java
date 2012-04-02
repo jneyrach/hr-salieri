@@ -4,15 +4,15 @@ import sshr.domainmodel.asistencia.GrupoHorario;
 
 import sshr.asistencia.AsistenciaApplication;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
+
+
+import javax.xml.bind.*;
+import javax.xml.bind.annotation.*;
 
 
 public class CrudFindAllGrupoHorario extends HttpServlet {
@@ -29,7 +29,7 @@ public class CrudFindAllGrupoHorario extends HttpServlet {
 
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		response.setContentType("text/plain");
+		response.setContentType("text/xml");
 		PrintWriter out = response.getWriter();
 
 		try {
@@ -38,17 +38,25 @@ public class CrudFindAllGrupoHorario extends HttpServlet {
 
 				if (request.getParameter("format").equals("XML")) {
 
-						CrudXMLTransferObject<GrupoHorario> to = new CrudXMLTransferObject<GrupoHorario>();
-						to.setDataRows(lgh);
+						/*
+						for (GrupoHorario gh: lgh) {
+						
+								gh.setCreatedOn(new Date());
+								gh.setUpdatedOn(new Date());
+						}
+						*/
+				
+						CrudTransferObject<GrupoHorario> to = new CrudTransferObject<GrupoHorario>();
+						to.setXmlDataRows(lgh);
 
 						out.println( CrudXMLHelper.marshal(to) );
+						//out.println("<root><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow></root>");
 				}
 
 
 		} catch (Exception ex) {
 
-					ex.printStackTrace();
-					out.println("ERROR: " + ex.getMessage());
+					out.println("ERROR");
 		}
 
 		out.flush();

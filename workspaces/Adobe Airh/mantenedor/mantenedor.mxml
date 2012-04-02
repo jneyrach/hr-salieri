@@ -15,27 +15,57 @@
 					import mx.collections.*;
 					
 					[Bindable]
-					public var xmlXMLListCollection:XMLListCollection;
-					
-					[Bindable]
 					public var xmlData:XML;
-			
+					
 					private function test_data():void 
 					{ 
-						userRequest.addEventListener("result", httpResult); 
-						userRequest.addEventListener("fault", httpFault); 
-						userRequest.send();
+						try
+						{
+							dataRequest.addEventListener("result", httpResult); 
+							dataRequest.addEventListener("fault", httpFault); 
+							dataRequest.send();
+							
+							//Alert.show("Ok");
+						}
+						catch (e:Error)
+						{
+							Alert.show("EEEEERRRRROOOOORRRRR: " + e.message);
+						}
 					} 
 					
 					public function httpResult(event:ResultEvent):void { 
 						
-						xmlData = new XML("<root><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow></root>");
+						//var a:String = "<root><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow></root>";
+						
+						xmlData = new XML(event.result);
+						
+						//Alert.show(new XML(event.result));
 					} 
 		 
 					public function httpFault(event:FaultEvent):void { 
 						var faultstring:String = event.fault.faultString; 
-						Alert.show(faultstring); 
+						Alert.show("Ha ocurrido un error:\n" + faultstring); 
 					} 
+					
+					public function submitGuardar(eventObj:MouseEvent):void {
+                
+						if (ID.text == "0")
+						{
+							updateRequest.url = "http://mirhrh.appspot.com/CrudCreateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text;
+						}
+						else
+						{
+							updateRequest.url = "http://mirhrh.appspot.com/CrudUpdateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text + "&ID=" + ID.text;
+						}
+							
+					}   
+					
+					public function nuevoRegistro(eventObj:MouseEvent):void {
+                
+						ID.text     = "0";
+						codigo.text = "";
+						desc.text   = "";
+					}   
 		]]> 
     </fx:Script> 
 
@@ -44,26 +74,45 @@
     </s:layout>
 	
     <fx:Declarations> 
-        <s:HTTPService id="userRequest" url="http://localhost:8080/" useProxy="false" method="GET"> 
-            <mx:request xmlns="">
-			</mx:request>         
-        </s:HTTPService> 
+		<mx:HTTPService id="dataRequest"   url="http://mirhrh.appspot.com/AsistenciaCrudFindAllGrupoHorario?format=XML" useProxy="false" method="POST" resultFormat="e4x" showBusyCursor="true" /> 
+		<mx:HTTPService id="updateRequest" url="http://mirhrh.appspot.com/" useProxy="false" method="POST" showBusyCursor="true" /> 
     </fx:Declarations>
 
+
+
 	
-    <mx:DataGrid id="gridGrupoHorario" dataProvider="{xmlData.dataRow}" width="900">
+    <mx:DataGrid id="gridGrupoHorario" dataProvider="{xmlData.DataRows.DataRow}" width="900">
         <mx:columns>
-			<mx:DataGridColumn dataField="nombre"      headerText="Nombre"/>
-			<mx:DataGridColumn dataField="codigo"      headerText="Código"/>
-			<mx:DataGridColumn dataField="desc"        headerText="Descripción"/>
-			<mx:DataGridColumn dataField="creado"      headerText="Fecha Creación"/>
-			<mx:DataGridColumn dataField="actualizado" headerText="Fecha Actualización"/>
+			<mx:DataGridColumn dataField="ID"         headerText="ID"/>
+			<mx:DataGridColumn dataField="codigo"     headerText="Código"/>
+			<mx:DataGridColumn dataField="desc"       headerText="Descripción"/>
+			<mx:DataGridColumn dataField="createdOn"  headerText="Fecha Creación"/>
+			<mx:DataGridColumn dataField="updatedOn"  headerText="Fecha Actualización"/>
         </mx:columns>
     </mx:DataGrid>
     
-    <s:Form>
-        <s:FormItem label="Nombre">
-            <s:Label text="{gridGrupoHorario.selectedItem.nombre}"/>
-        </s:FormItem>
-    </s:Form>
+    <mx:Form defaultButton="{SubmitButton}">
+        <mx:FormItem label="ID">
+            <mx:Label text="{gridGrupoHorario.selectedItem.ID}"/>
+			<mx:TextInput id="ID" text="{gridGrupoHorario.selectedItem.ID}" visible="true" />
+        </mx:FormItem>
+        <mx:FormItem label="Código">
+            <mx:Label text="{gridGrupoHorario.selectedItem.codigo}"/>
+			<mx:TextInput id="codigo" text="{gridGrupoHorario.selectedItem.codigo}"/>
+        </mx:FormItem>
+        <mx:FormItem label="Descripción">
+            <mx:Label text="{gridGrupoHorario.selectedItem.desc}"/>
+			<mx:TextInput id="desc" text="{gridGrupoHorario.selectedItem.desc}"/>
+        </mx:FormItem>
+        <mx:FormItem label="Creado">
+            <mx:Label text="{gridGrupoHorario.selectedItem.createdOn}"/>
+        </mx:FormItem>
+        <mx:FormItem label="Última actualización">
+            <mx:Label text="{gridGrupoHorario.selectedItem.updatedOn}"/>
+        </mx:FormItem>
+		<mx:FormItem>
+            <mx:Button id="SubmitButton" label="Guardar" click="submitGuardar(event);"/>
+            <mx:Button id="NewButton" label="Nuevo" click="nuevoRegistro(event);"/>
+        </mx:FormItem>
+    </mx:Form>
 </s:Application>
