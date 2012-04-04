@@ -16,10 +16,9 @@ import sshr.datamodel.jpa.JPAEntityManager;
 import sshr.datamodel.jpa.BaseDataEntity;
 import sshr.datamodel.jpa.JPAQueryBuilder;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
-import javax.persistence.Query;
+import javax.persistence.*;
 
 
 public final class AsistenciaEntityManager implements EntityManager {
@@ -29,7 +28,7 @@ public final class AsistenciaEntityManager implements EntityManager {
 
 		BaseDataEntity ne = DataEntityFactory.Instance.newDataEntity( entity.getClass() );
 		ne.autoPopulate( (T)entity );
-
+		
 		ne = (BaseDataEntity)JPAEntityManager.createEntity(ne);
 
 		return (T)ne.reversePopulate( (T)entity );
@@ -47,33 +46,38 @@ public final class AsistenciaEntityManager implements EntityManager {
 	}
 
 	@Override
-	public <T extends BaseEntity> void remove(T entity) throws EntityManagerException {
+	public <T extends BaseEntity, U extends Number> void remove(Class<T> eClass, U id) throws EntityManagerException {
 
-		BaseDataEntity ne = DataEntityFactory.Instance.newDataEntity( entity.getClass() );
-		ne.autoPopulate( (T)entity );
-
-		ne = (BaseDataEntity)JPAEntityManager.updateEntity(ne);
-
-		JPAEntityManager.deleteEntity(ne);
-	}
-
-	@Override
-	public <T extends BaseEntity, U extends Number> T find(Class<T> eClass, U id) throws EntityManagerException, NoDataFoundException {
-
-		Class a = DataEntityFactory.Instance.getClassDataEntity(eClass);
-
-		BaseDataEntity bde = JPAEntityManager.getEntityByID(a, id);
-
-		T de;
 		try {
-				de = EntityFactory.Instance.getNewEntity( eClass );
+				Class a = DataEntityFactory.Instance.getClassDataEntity(eClass);
+
+				BaseDataEntity bde = JPAEntityManager.getEntityByID(a, id);
+			
+				JPAEntityManager.deleteEntity( bde );
 
 		} catch (Exception ex) {
 
 					throw new EntityManagerException(ex);
 		}
+	}
 
-		de = (T)bde.reversePopulate( de );
+	@Override
+	public <T extends BaseEntity, U extends Number> T find(Class<T> eClass, U id) throws EntityManagerException {
+
+		T de;
+		try {
+				Class a = DataEntityFactory.Instance.getClassDataEntity(eClass);
+
+				BaseDataEntity bde = JPAEntityManager.getEntityByID(a, id);
+
+				de = EntityFactory.Instance.getNewEntity( eClass );
+
+				de = (T)bde.reversePopulate( de );
+
+		} catch (Exception ex) {
+
+					throw new EntityManagerException(ex);
+		}
 
 		return de;
 	}

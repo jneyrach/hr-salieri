@@ -54,4 +54,4 @@ rem erase war\WEB-INF\appengine-generated\* /s /q
 cd ..
 
 erase workspaces\*.class /s /q
-cd..
+
