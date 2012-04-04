@@ -1,10 +1,11 @@
+
 {
   "name": "SSHR - Asistencia",
   "description": "Sistema de Control y Gestion de Asistencia",
-  "version": "10",
+  "version": "10.1",
   "app": {
     "launch": {
-      "local_path": "crud-record-list-test.html"
+      "local_path": "mantenedor.html"
     }
   },
   "icons": {
