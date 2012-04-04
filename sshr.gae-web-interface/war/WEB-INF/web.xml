@@ -14,6 +14,14 @@
 		<servlet-class>sshr.web.servlet.asistencia.CrudCreateGrupoHorario</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>AsistenciaCrudUpdateGrupoHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudUpdateGrupoHorario</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AsistenciaCrudRemoveGrupoHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudRemoveGrupoHorario</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>AsistenciaCrudFindGrupoHorario</servlet-name>
 		<servlet-class>sshr.web.servlet.asistencia.CrudFindGrupoHorario</servlet-class>
 	</servlet>
@@ -25,6 +33,14 @@
 	<servlet-mapping>
 		<servlet-name>AsistenciaCrudCreateGrupoHorario</servlet-name>
 		<url-pattern>/AsistenciaCrudCreateGrupoHorario</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AsistenciaCrudUpdateGrupoHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudUpdateGrupoHorario</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AsistenciaCrudRemoveGrupoHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudRemoveGrupoHorario</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AsistenciaCrudFindGrupoHorario</servlet-name>

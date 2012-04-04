@@ -26,6 +26,9 @@ public class CrudFindGrupoHorario extends HttpServlet {
 
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-cache,no-store,max-age=0");
+		response.setDateHeader("Expires", 1);
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		

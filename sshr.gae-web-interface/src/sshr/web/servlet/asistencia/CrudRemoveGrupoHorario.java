@@ -1,58 +1,48 @@
 package sshr.web.servlet.asistencia;
 
-import sshr.domainmodel.asistencia.GrupoHorario;
-
 import sshr.asistencia.AsistenciaApplication;
 
-import java.util.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-import java.io.*;
-
-import javax.servlet.http.*;
-
-
-import javax.xml.bind.*;
-import javax.xml.bind.annotation.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
-public class CrudFindAllGrupoHorario extends HttpServlet {
+public class CrudRemoveGrupoHorario extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+	
 		this.processRequest(request, response);
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+	
 		this.processRequest(request, response);
 	}
 
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+	
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache,no-store,max-age=0");
 		response.setDateHeader("Expires", 1);
-		response.setContentType("text/xml");
+		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
-
+		
 		try {
-				List<GrupoHorario> lgh = AsistenciaApplication.findAllGrupoHorario();
-
-
-				if (request.getParameter("format").equals("XML")) {
-
-						CrudTransferObject<GrupoHorario> to = new CrudTransferObject<GrupoHorario>();
-						to.setXmlDataRows(lgh);
-
-						out.println( CrudXMLHelper.marshal(to) );
-				}
-
-
+				Long id = Long.parseLong( request.getParameter("ID") );
+			
+				AsistenciaApplication.removeGrupoHorario(id);
+			
+				out.println("OK");
+		
 		} catch (Exception ex) {
-
-					out.println("ERROR");
+		
+					out.println("ERROR: " + ex.getMessage());
+					ex.printStackTrace();
 		}
-
+		
 		out.flush();
 		out.close();
 	}

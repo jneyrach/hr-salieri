@@ -21,10 +21,14 @@
 					{ 
 						try
 						{
+							updateRequest.addEventListener("result", updateResult); 
+							updateRequest.addEventListener("fault", httpFault); 
+
 							dataRequest.addEventListener("result", httpResult); 
 							dataRequest.addEventListener("fault", httpFault); 
 							dataRequest.send();
 							
+							ID.text = "0";
 							//Alert.show("Ok");
 						}
 						catch (e:Error)
@@ -33,6 +37,13 @@
 						}
 					} 
 					
+					public function updateResult(event:ResultEvent):void { 
+						
+						dataRequest.send();
+						
+						Alert.show("Se han actualizado los registros");
+					} 
+		 
 					public function httpResult(event:ResultEvent):void { 
 						
 						//var a:String = "<root><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow><dataRow><nombre>Bandera - Vendedores</nombre><desc>Bandera - Vendedores</desc><codigo>BANVEN</codigo><creado>01.01.2012</creado><actualizado>01.01.2012</actualizado></dataRow></root>";
@@ -49,17 +60,61 @@
 					
 					public function submitGuardar(eventObj:MouseEvent):void {
                 
-						if (ID.text == "0")
+						try
 						{
-							updateRequest.url = "http://mirhrh.appspot.com/CrudCreateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text;
+							var url:String = "";
+							
+							if (ID.text == "0")
+							{
+								url = "http://mirhrh.appspot.com/AsistenciaCrudCreateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text;
+								updateRequest.url = url;
+								updateRequest.send();
+								dataRequest.send();
+							}
+							else
+							{
+								url = "http://mirhrh.appspot.com/AsistenciaCrudUpdateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text + "&ID=" + ID.text;
+								updateRequest.url = url;
+								updateRequest.send();
+								dataRequest.send();
+							}
 						}
-						else
+						catch (e:Error)
 						{
-							updateRequest.url = "http://mirhrh.appspot.com/CrudUpdateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text + "&ID=" + ID.text;
+							Alert.show("Error: " + e.message);
 						}
 							
+						//Alert.show(url);
+						ID.text = "0";
 					}   
 					
+					public function submitDelete(eventObj:MouseEvent):void {
+                
+						try
+						{
+							var url:String = "";
+							
+							if (ID.text == "0")
+							{
+								Alert.show("Error: Debe seleccionar un registro primero.");
+							}
+							else
+							{
+								url = "http://mirhrh.appspot.com/AsistenciaCrudRemoveGrupoHorario?ID=" + ID.text;
+								updateRequest.url = url;
+								updateRequest.send();
+								dataRequest.send();
+							}
+						}
+						catch (e:Error)
+						{
+							Alert.show("Error: " + e.message);
+						}
+							
+						//Alert.show(url);
+						ID.text = "0";
+					}   
+
 					public function nuevoRegistro(eventObj:MouseEvent):void {
                 
 						ID.text     = "0";
@@ -91,7 +146,7 @@
         </mx:columns>
     </mx:DataGrid>
     
-    <mx:Form defaultButton="{SubmitButton}">
+    <mx:Form>
         <mx:FormItem label="ID">
             <mx:Label text="{gridGrupoHorario.selectedItem.ID}"/>
 			<mx:TextInput id="ID" text="{gridGrupoHorario.selectedItem.ID}" visible="true" />
@@ -111,8 +166,9 @@
             <mx:Label text="{gridGrupoHorario.selectedItem.updatedOn}"/>
         </mx:FormItem>
 		<mx:FormItem>
-            <mx:Button id="SubmitButton" label="Guardar" click="submitGuardar(event);"/>
-            <mx:Button id="NewButton" label="Nuevo" click="nuevoRegistro(event);"/>
+            <mx:Button id="UpdateButton" label="Guardar"  click="submitGuardar(event);"/>
+            <mx:Button id="DeleteButton" label="Eliminar" click="submitDelete(event);"/>
+            <mx:Button id="NewButton"    label="Nuevo"    click="nuevoRegistro(event);"/>
         </mx:FormItem>
     </mx:Form>
 </s:Application>
