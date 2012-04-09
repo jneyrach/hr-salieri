@@ -21,6 +21,7 @@ public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asisten
 
 	private String _desc;
 	private String _codigo;
+	private String _nombre;
 
 	private Date _createdOn;
 	private Date _updatedOn;
@@ -41,6 +42,11 @@ public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asisten
 		return this._codigo;
 	}
 
+	public String getNombre() {
+
+		return this._nombre;
+	}
+
 	public void setDesc(String desc) {
 
 		this._desc = desc;
@@ -49,6 +55,11 @@ public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asisten
 	public void setCodigo(String codigo) {
 
 		this._codigo = codigo;
+	}
+
+	public void setNombre(String nombre) {
+
+		this._nombre = nombre;
 	}
 
 	public void setId(Long id) {
@@ -73,6 +84,7 @@ public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asisten
 		this._id        = phvo.getID();
 		this._desc      = phvo.getDesc();
 		this._codigo    = phvo.getCodigo();
+		this._nombre    = phvo.getNombre();
 		this._createdOn = phvo.getCreatedOn();
 		this._updatedOn = phvo.getUpdatedOn();
 	}
@@ -82,6 +94,7 @@ public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asisten
 
 		phvo.setID(this._id);
 		phvo.setCodigo(this._codigo);
+		phvo.setNombre(this._nombre);
 		phvo.setDesc(this._desc);
 		phvo.setCreatedOn(this._createdOn);
 		phvo.setUpdatedOn(this._updatedOn);
