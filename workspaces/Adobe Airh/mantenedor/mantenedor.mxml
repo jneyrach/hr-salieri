@@ -66,14 +66,14 @@
 							
 							if (ID.text == "0")
 							{
-								url = "http://mirhrh.appspot.com/AsistenciaCrudCreateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text;
+								url = "http://mirhrh.appspot.com/AsistenciaCrudCreatePerfilHorario?desc=" + desc.text + "&codigo=" + codigo.text + "&nombre=" + nombre.text;
 								updateRequest.url = url;
 								updateRequest.send();
 								dataRequest.send();
 							}
 							else
 							{
-								url = "http://mirhrh.appspot.com/AsistenciaCrudUpdateGrupoHorario?desc=" + desc.text + "&codigo=" + codigo.text + "&ID=" + ID.text;
+								url = "http://mirhrh.appspot.com/AsistenciaCrudUpdatePerfilHorario?desc=" + desc.text + "&codigo=" + codigo.text + "&ID=" + ID.text + "&nombre=" + nombre.text;
 								updateRequest.url = url;
 								updateRequest.send();
 								dataRequest.send();
@@ -100,7 +100,7 @@
 							}
 							else
 							{
-								url = "http://mirhrh.appspot.com/AsistenciaCrudRemoveGrupoHorario?ID=" + ID.text;
+								url = "http://mirhrh.appspot.com/AsistenciaCrudRemovePerfilHorario?ID=" + ID.text;
 								updateRequest.url = url;
 								updateRequest.send();
 								dataRequest.send();
@@ -119,6 +119,7 @@
                 
 						ID.text     = "0";
 						codigo.text = "";
+						nombre.text = "";
 						desc.text   = "";
 					}   
 		]]> 
@@ -129,17 +130,18 @@
     </s:layout>
 	
     <fx:Declarations> 
-		<mx:HTTPService id="dataRequest"   url="http://mirhrh.appspot.com/AsistenciaCrudFindAllGrupoHorario?format=XML" useProxy="false" method="POST" resultFormat="e4x" showBusyCursor="true" /> 
+		<mx:HTTPService id="dataRequest"   url="http://mirhrh.appspot.com/AsistenciaCrudFindAllPerfilHorario?format=XML" useProxy="false" method="POST" resultFormat="e4x" showBusyCursor="true" /> 
 		<mx:HTTPService id="updateRequest" url="http://mirhrh.appspot.com/" useProxy="false" method="POST" showBusyCursor="true" /> 
     </fx:Declarations>
 
 
 
 	
-    <mx:DataGrid id="gridGrupoHorario" dataProvider="{xmlData.DataRows.DataRow}" width="900">
+    <mx:DataGrid id="gridPerfilHorario" dataProvider="{xmlData.DataRows.DataRow}" width="900">
         <mx:columns>
 			<mx:DataGridColumn dataField="ID"         headerText="ID"/>
 			<mx:DataGridColumn dataField="codigo"     headerText="Código"/>
+			<mx:DataGridColumn dataField="nombre"     headerText="Nombre"/>
 			<mx:DataGridColumn dataField="desc"       headerText="Descripción"/>
 			<mx:DataGridColumn dataField="createdOn"  headerText="Fecha Creación"/>
 			<mx:DataGridColumn dataField="updatedOn"  headerText="Fecha Actualización"/>
@@ -148,22 +150,26 @@
     
     <mx:Form>
         <mx:FormItem label="ID">
-            <mx:Label text="{gridGrupoHorario.selectedItem.ID}"/>
-			<mx:TextInput id="ID" text="{gridGrupoHorario.selectedItem.ID}" visible="true" />
+            <mx:Label text="{gridPerfilHorario.selectedItem.ID}"/>
+			<mx:TextInput id="ID" text="{gridPerfilHorario.selectedItem.ID}" visible="true" />
         </mx:FormItem>
         <mx:FormItem label="Código">
-            <mx:Label text="{gridGrupoHorario.selectedItem.codigo}"/>
-			<mx:TextInput id="codigo" text="{gridGrupoHorario.selectedItem.codigo}"/>
+            <mx:Label text="{gridPerfilHorario.selectedItem.codigo}"/>
+			<mx:TextInput id="codigo" text="{gridPerfilHorario.selectedItem.codigo}"/>
+        </mx:FormItem>
+        <mx:FormItem label="Nombre">
+            <mx:Label text="{gridPerfilHorario.selectedItem.nombre}"/>
+			<mx:TextInput id="nombre" text="{gridPerfilHorario.selectedItem.nombre}"/>
         </mx:FormItem>
         <mx:FormItem label="Descripción">
-            <mx:Label text="{gridGrupoHorario.selectedItem.desc}"/>
-			<mx:TextInput id="desc" text="{gridGrupoHorario.selectedItem.desc}"/>
+            <mx:Label text="{gridPerfilHorario.selectedItem.desc}"/>
+			<mx:TextInput id="desc" text="{gridPerfilHorario.selectedItem.desc}"/>
         </mx:FormItem>
         <mx:FormItem label="Creado">
-            <mx:Label text="{gridGrupoHorario.selectedItem.createdOn}"/>
+            <mx:Label text="{gridPerfilHorario.selectedItem.createdOn}"/>
         </mx:FormItem>
         <mx:FormItem label="Última actualización">
-            <mx:Label text="{gridGrupoHorario.selectedItem.updatedOn}"/>
+            <mx:Label text="{gridPerfilHorario.selectedItem.updatedOn}"/>
         </mx:FormItem>
 		<mx:FormItem>
             <mx:Button id="UpdateButton" label="Guardar"  click="submitGuardar(event);"/>
