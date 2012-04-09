@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public final class GrupoHorario extends BaseDataEntity<sshr.domainmodel.asistencia.GrupoHorario> {
+public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asistencia.PerfilHorario> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,25 +68,25 @@ public final class GrupoHorario extends BaseDataEntity<sshr.domainmodel.asistenc
 
 
 	@Override
-	public void autoPopulate(sshr.domainmodel.asistencia.GrupoHorario ghvo) {
+	public void autoPopulate(sshr.domainmodel.asistencia.PerfilHorario phvo) {
 
-		this._id        = ghvo.getID();
-		this._desc      = ghvo.getDesc();
-		this._codigo    = ghvo.getCodigo();
-		this._createdOn = ghvo.getCreatedOn();
-		this._updatedOn = ghvo.getUpdatedOn();
+		this._id        = phvo.getID();
+		this._desc      = phvo.getDesc();
+		this._codigo    = phvo.getCodigo();
+		this._createdOn = phvo.getCreatedOn();
+		this._updatedOn = phvo.getUpdatedOn();
 	}
 
 	@Override
-	public sshr.domainmodel.asistencia.GrupoHorario reversePopulate(sshr.domainmodel.asistencia.GrupoHorario ghvo) {
+	public sshr.domainmodel.asistencia.PerfilHorario reversePopulate(sshr.domainmodel.asistencia.PerfilHorario phvo) {
 
-		ghvo.setID(this._id);
-		ghvo.setCodigo(this._codigo);
-		ghvo.setDesc(this._desc);
-		ghvo.setCreatedOn(this._createdOn);
-		ghvo.setUpdatedOn(this._updatedOn);
+		phvo.setID(this._id);
+		phvo.setCodigo(this._codigo);
+		phvo.setDesc(this._desc);
+		phvo.setCreatedOn(this._createdOn);
+		phvo.setUpdatedOn(this._updatedOn);
 
-		return ghvo;
+		return phvo;
 	}
 
 }

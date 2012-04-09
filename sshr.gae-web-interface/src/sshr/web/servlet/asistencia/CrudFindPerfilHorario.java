@@ -1,6 +1,6 @@
 package sshr.web.servlet.asistencia;
 
-import sshr.domainmodel.asistencia.GrupoHorario;
+import sshr.domainmodel.asistencia.PerfilHorario;
 
 import sshr.asistencia.AsistenciaApplication;
 
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class CrudFindGrupoHorario extends HttpServlet {
+public class CrudFindPerfilHorario extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	
@@ -35,9 +35,9 @@ public class CrudFindGrupoHorario extends HttpServlet {
 		try {
 				long id = Long.parseLong( request.getParameter("id") );
 		
-				GrupoHorario gh = AsistenciaApplication.findGrupoHorario( id );
+				PerfilHorario gh = AsistenciaApplication.findPerfilHorario( id );
 			
-				out.println("GrupoHorario: " + gh.getCodigo() + " - " + gh.getDesc());
+				out.println("PerfilHorario: " + gh.getCodigo() + " - " + gh.getDesc());
 		
 		} catch (Exception ex) {
 		

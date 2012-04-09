@@ -12,8 +12,8 @@ public enum DataEntityFactory {
 	
 	public BaseDataEntity newDataEntity(Class<?> domainEntity) {
 	
-		if (domainEntity.getSimpleName().equals("GrupoHorario"))
-			return (new GrupoHorario());
+		if (domainEntity.getSimpleName().equals("PerfilHorario"))
+			return (new PerfilHorario());
 
 		else
 			return null;
@@ -22,8 +22,8 @@ public enum DataEntityFactory {
 
 	public Class<? extends BaseDataEntity> getClassDataEntity(Class<?> domainEntity) {
 	
-		if (domainEntity.getSimpleName().equals("GrupoHorario"))
-			return sshr.asistencia.entity.GrupoHorario.class;
+		if (domainEntity.getSimpleName().equals("PerfilHorario"))
+			return sshr.asistencia.entity.PerfilHorario.class;
 
 		else
 			return null;
