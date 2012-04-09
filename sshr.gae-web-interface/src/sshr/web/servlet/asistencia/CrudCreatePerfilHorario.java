@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class CrudUpdateGrupoHorario extends HttpServlet {
+public class CrudCreatePerfilHorario extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	
@@ -30,12 +30,12 @@ public class CrudUpdateGrupoHorario extends HttpServlet {
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		
+		String desc   = request.getParameter("desc");
+		String codigo = request.getParameter("codigo");
+		String nombre = request.getParameter("nombre");
+	
 		try {
-				String desc   = request.getParameter("desc");
-				String codigo = request.getParameter("codigo");
-				Long   id     = Long.parseLong( request.getParameter("ID") );
-			
-				AsistenciaApplication.updateGrupoHorario(id, desc, codigo);
+				AsistenciaApplication.createPerfilHorario(desc, codigo, nombre);
 			
 				out.println("OK");
 		

@@ -2,26 +2,18 @@ package sshr.asistencia;
 
 import sshr.asistencia.entity.DataEntityFactory;
 
-import sshr.domainmodel.BaseEntity;
-import sshr.domainmodel.EntityFactory;
-import sshr.domainmodel.EntityAccessNotAllowedException;
-import sshr.domainmodel.asistencia.GrupoHorario;
+import sshr.domainmodel.*;
+import sshr.domainmodel.asistencia.*;
 
-import sshr.datamodel.EntityQuery;
-import sshr.datamodel.EntityManager;
-import sshr.datamodel.NoDataFoundException;
-import sshr.datamodel.EntityManagerException;
-import sshr.datamodel.QueryCatalog;
-import sshr.datamodel.jpa.JPAEntityManager;
-import sshr.datamodel.jpa.BaseDataEntity;
-import sshr.datamodel.jpa.JPAQueryBuilder;
+import sshr.datamodel.*;
+import sshr.datamodel.jpa.*;
 
 import java.util.*;
 
 import javax.persistence.*;
 
 
-public final class AsistenciaEntityManager implements EntityManager {
+public final class AsistenciaEntityManager implements sshr.datamodel.EntityManager {
 
 	@Override
 	public <T extends BaseEntity> T add(T entity) throws EntityManagerException {

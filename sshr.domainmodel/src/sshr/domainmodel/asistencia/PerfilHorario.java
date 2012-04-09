@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.*;
 
 
 @XmlRootElement
-public final class GrupoHorario extends BaseEntity<Long> {
+public final class PerfilHorario extends BaseEntity<Long> {
 
 	private String _nombre;
 	private String _codigo;
@@ -81,6 +81,38 @@ public final class GrupoHorario extends BaseEntity<Long> {
                 return String.class;
             }
 		}
+        ,_NOMBRE() {
+
+            @Override
+            public int getCode() {
+                return 2;
+            }
+
+            @Override
+            public int getOrdinal() {
+                return 2;
+            }
+
+            @Override
+            public String getName() {
+                return "_nombre";
+            }
+
+            @Override
+            public String getParameterName() {
+                return getName();
+            }
+
+            @Override
+            public String getAccessorName() {
+                return "Nombre";
+            }
+
+            @Override
+            public Class getClassType() {
+                return String.class;
+            }
+		}
         ,_DESC() {
 
             @Override
@@ -128,7 +160,7 @@ public final class GrupoHorario extends BaseEntity<Long> {
 	}
 
 
-	private GrupoHorario() throws EntityAccessNotAllowedException {
+	private PerfilHorario() throws EntityAccessNotAllowedException {
 
 		super();
 	}

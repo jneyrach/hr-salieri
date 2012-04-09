@@ -10,45 +10,45 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>AsistenciaCrudCreateGrupoHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudCreateGrupoHorario</servlet-class>
+		<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudCreatePerfilHorario</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AsistenciaCrudUpdateGrupoHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudUpdateGrupoHorario</servlet-class>
+		<servlet-name>AsistenciaCrudUpdatePerfilHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudUpdatePerfilHorario</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AsistenciaCrudRemoveGrupoHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudRemoveGrupoHorario</servlet-class>
+		<servlet-name>AsistenciaCrudRemovePerfilHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudRemovePerfilHorario</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AsistenciaCrudFindGrupoHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudFindGrupoHorario</servlet-class>
+		<servlet-name>AsistenciaCrudFindPerfilHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudFindPerfilHorario</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>AsistenciaCrudFindAllGrupoHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudFindAllGrupoHorario</servlet-class>
+		<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
+		<servlet-class>sshr.web.servlet.asistencia.CrudFindAllPerfilHorario</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>AsistenciaCrudCreateGrupoHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudCreateGrupoHorario</url-pattern>
+		<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudCreatePerfilHorario</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AsistenciaCrudUpdateGrupoHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudUpdateGrupoHorario</url-pattern>
+		<servlet-name>AsistenciaCrudUpdatePerfilHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudUpdatePerfilHorario</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AsistenciaCrudRemoveGrupoHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudRemoveGrupoHorario</url-pattern>
+		<servlet-name>AsistenciaCrudRemovePerfilHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudRemovePerfilHorario</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AsistenciaCrudFindGrupoHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudFindGrupoHorario</url-pattern>
+		<servlet-name>AsistenciaCrudFindPerfilHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudFindPerfilHorario</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>AsistenciaCrudFindAllGrupoHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudFindAllGrupoHorario</url-pattern>
+		<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
+		<url-pattern>/AsistenciaCrudFindAllPerfilHorario</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
