@@ -15,6 +15,9 @@ public enum DataEntityFactory {
 		if (domainEntity.getSimpleName().equals("PerfilHorario"))
 			return (new PerfilHorario());
 
+		if (domainEntity.getSimpleName().equals("TipoDia"))
+			return (new TipoDia());
+
 		else
 			return null;
 			
@@ -24,6 +27,9 @@ public enum DataEntityFactory {
 	
 		if (domainEntity.getSimpleName().equals("PerfilHorario"))
 			return sshr.asistencia.entity.PerfilHorario.class;
+			
+		if (domainEntity.getSimpleName().equals("TipoDia"))
+			return sshr.asistencia.entity.TipoDia.class;
 
 		else
 			return null;
