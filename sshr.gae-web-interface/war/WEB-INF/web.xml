@@ -9,46 +9,103 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
-	<servlet>
-		<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudCreatePerfilHorario</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>AsistenciaCrudUpdatePerfilHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudUpdatePerfilHorario</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>AsistenciaCrudRemovePerfilHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudRemovePerfilHorario</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>AsistenciaCrudFindPerfilHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudFindPerfilHorario</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
-		<servlet-class>sshr.web.servlet.asistencia.CrudFindAllPerfilHorario</servlet-class>
-	</servlet>
+	<!--
+			CRUD[PERFIL-HORARIO]
+	-->
+			<servlet>
+				<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudCreatePerfilHorario</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudUpdatePerfilHorario</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudUpdatePerfilHorario</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudRemovePerfilHorario</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudRemovePerfilHorario</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudFindPerfilHorario</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudFindPerfilHorario</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudFindAllPerfilHorario</servlet-class>
+			</servlet>
+			
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
+				<url-pattern>/AsistenciaCrudCreatePerfilHorario</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudUpdatePerfilHorario</servlet-name>
+				<url-pattern>/AsistenciaCrudUpdatePerfilHorario</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudRemovePerfilHorario</servlet-name>
+				<url-pattern>/AsistenciaCrudRemovePerfilHorario</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudFindPerfilHorario</servlet-name>
+				<url-pattern>/AsistenciaCrudFindPerfilHorario</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
+				<url-pattern>/AsistenciaCrudFindAllPerfilHorario</url-pattern>
+			</servlet-mapping>
+
+
 	
-	<servlet-mapping>
-		<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudCreatePerfilHorario</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AsistenciaCrudUpdatePerfilHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudUpdatePerfilHorario</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AsistenciaCrudRemovePerfilHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudRemovePerfilHorario</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AsistenciaCrudFindPerfilHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudFindPerfilHorario</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
-		<url-pattern>/AsistenciaCrudFindAllPerfilHorario</url-pattern>
-	</servlet-mapping>
+	
+	<!--
+			CRUD[TIPO-DIA]
+	-->
+			<servlet>
+				<servlet-name>AsistenciaCrudCreateTipoDia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudCreateTipoDia</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudUpdateTipoDia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudUpdateTipoDia</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudRemoveTipoDia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudRemoveTipoDia</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudFindTipoDia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudFindTipoDia</servlet-class>
+			</servlet>
+			<servlet>
+				<servlet-name>AsistenciaCrudFindAllTipoDia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudFindAllTipoDia</servlet-class>
+			</servlet>
+			
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudCreateTipoDia</servlet-name>
+				<url-pattern>/AsistenciaCrudCreateTipoDia</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudUpdateTipoDia</servlet-name>
+				<url-pattern>/AsistenciaCrudUpdateTipoDia</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudRemoveTipoDia</servlet-name>
+				<url-pattern>/AsistenciaCrudRemoveTipoDia</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudFindTipoDia</servlet-name>
+				<url-pattern>/AsistenciaCrudFindTipoDia</url-pattern>
+			</servlet-mapping>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudFindAllTipoDia</servlet-name>
+				<url-pattern>/AsistenciaCrudFindAllTipoDia</url-pattern>
+			</servlet-mapping>	
+	
+	
+	
+	
+	
+	
 	
 </web-app>
