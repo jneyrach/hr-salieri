@@ -1,11 +1,11 @@
 
 {
   "name": "SSHR - Asistencia",
-  "description": "Sistema de Control y Gestion de Asistencia",
-  "version": "10.2",
+  "description": "Sistema de Control y Gestion de Asistencia [ADMIN]",
+  "version": "10.5",
   "app": {
     "launch": {
-      "local_path": "mantenedor.html"
+      "local_path": "main.html"
     }
   },
   "icons": {

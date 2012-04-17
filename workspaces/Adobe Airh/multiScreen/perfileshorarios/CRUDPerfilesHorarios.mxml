@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mx:TitleWindow name             = "CRUDPerfilesHorarios"
+                xmlns:fx         = "http://ns.adobe.com/mxml/2009"
+				xmlns:sx         = "library://ns.adobe.com/flex/spark"
+			    xmlns:mx         = "library://ns.adobe.com/flex/mx"
+                layout           = "absolute"
+				width            = "900"
+				height           = "400"
+				showCloseButton  = "true"
+				title            = "PERFILES DE HORARIO - ADMINISTRACIÓN"
+				creationComplete = "loadData()">
+	
+    <fx:Script source="../scripts/CRUDPerfilesHorarios.as" /> 
+	
+
+    <fx:Declarations> 
+		<mx:HTTPService id="dataRequest"   url="http://mirhrh.appspot.com/AsistenciaCrudFindAllPerfilHorario?format=XML" useProxy="false" method="POST" resultFormat="e4x" showBusyCursor="true" /> 
+		<mx:HTTPService id="updateRequest" url="http://mirhrh.appspot.com/" useProxy="false" method="POST" showBusyCursor="true" /> 
+    </fx:Declarations>
+
+
+	<mx:TextInput id="ID" text="{gridPerfilHorario.selectedItem.ID}" visible="false" />
+	
+	<mx:TabNavigator x="5" y="20" width="880" height="300">
+	
+		<mx:VBox label="Perfiles del Sistema" paddingLeft="5" paddingRight="5" paddingTop="15">
+			<mx:DataGrid id="gridPerfilHorario" dataProvider="{xmlData.DataRows.DataRow}" width="100%">
+				<mx:columns>
+					<mx:DataGridColumn dataField="codigo"    headerText="Código"              width="80"  wordWrap="true" />
+					<mx:DataGridColumn dataField="nombre"    headerText="Nombre"              width="200" wordWrap="true" />
+					<mx:DataGridColumn dataField="desc"      headerText="Descripción"         width="200" wordWrap="false" />
+					<mx:DataGridColumn dataField="createdOn" headerText="Fecha Creación"      width="130" wordWrap="false" />
+					<mx:DataGridColumn dataField="updatedOn" headerText="Fecha Actualización" width="130" wordWrap="false" />
+				</mx:columns>
+			</mx:DataGrid>
+
+			<mx:HRule width="100%"/>
+			
+            <mx:Button id="DeleteButton" label="Eliminar" click="submitDelete();"/>
+
+		</mx:VBox>
+
+		<mx:VBox label="Modificar / Agregar" paddingLeft="5" paddingRight="5" paddingTop="15">
+			
+			<sx:BorderContainer borderStyle="solid" borderWeight="1" borderColor="white" width="100%">
+				<sx:layout>
+					<sx:HorizontalLayout />
+				</sx:layout>
+				
+				<mx:Label text="Código:" />
+				<mx:TextInput text="{gridPerfilHorario.selectedItem.codigo}" width="250" id="codigo" />
+				
+				<mx:Label text="Nombre:" />
+				<mx:TextInput text="{gridPerfilHorario.selectedItem.nombre}" width="400" id="nombre" />
+			</sx:BorderContainer> 
+	
+			<sx:BorderContainer borderStyle="solid" borderWeight="1" borderColor="white" width="100%">
+				<sx:layout>
+					<sx:HorizontalLayout />
+				</sx:layout>
+				
+				<mx:Label text="Descripción:" />
+				<mx:TextInput text="{gridPerfilHorario.selectedItem.desc}" width="600" id="desc" />
+			</sx:BorderContainer> 
+			
+			<sx:BorderContainer borderStyle="solid" borderWeight="1" borderColor="white" width="100%">
+				<sx:layout>
+					<sx:HorizontalLayout />
+				</sx:layout>
+				
+				<mx:Label text="Fecha de Creación:" />
+				<mx:Label text="{gridPerfilHorario.selectedItem.createdOn}" id="fCrea" />
+				<mx:Label text="Fecha Ultima Actualización:" />
+				<mx:Label text="{gridPerfilHorario.selectedItem.updatedOn}" id="fAct" />
+			</sx:BorderContainer> 
+			
+			<mx:HRule width="100%"/>
+
+			<sx:BorderContainer borderStyle="solid" borderWeight="1" borderColor="white" width="100%">
+				<sx:layout>
+					<sx:HorizontalLayout />
+				</sx:layout>
+				
+            <mx:Button id="UpdateButton" label="Guardar"  click="submitGuardar();"/>
+            <mx:Button id="NewButton"    label="Nuevo"    click="nuevoRegistro();"/>
+			</sx:BorderContainer> 
+			
+		</mx:VBox>
+		
+	</mx:TabNavigator>
+    
+	
+</mx:TitleWindow>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mx:Application xmlns:mx         = "http://www.adobe.com/2006/mxml"
+                layout           = "vertical" 
+                verticalAlign    = "middle" 
+                backgroundColor  = "#5b686f" 
+                creationComplete = "init()">
+
+    <mx:Script>
+        <![CDATA[
+            import mx.controls.Label;
+            import mx.events.CloseEvent;
+            import mx.containers.TitleWindow;
+            import mx.managers.PopUpManager;
+			import perfileshorarios.CRUDPerfilesHorarios;
+        
+            private var titleWindow:TitleWindow;
+			private var crudPerfilesHorarios:CRUDPerfilesHorarios;
+        
+            private function init():void {
+				crudPerfilesHorarios = new CRUDPerfilesHorarios();
+				crudPerfilesHorarios.addEventListener(CloseEvent.CLOSE, titleWindow_close);
+				
+                PopUpManager.addPopUp(crudPerfilesHorarios, this, true);
+                PopUpManager.centerPopUp(crudPerfilesHorarios);
+            }
+            
+            private function titleWindow_close(evt:CloseEvent):void {
+                PopUpManager.removePopUp(crudPerfilesHorarios);
+            }
+        ]]>
+    </mx:Script>
+    
+    <mx:Button label="Launch TitleWindow" click="init()" />
+    
+</mx:Application>
