@@ -1,0 +1,19 @@
+	.ListaPeriodosAbiertos
+	{
+		font-style: italic;
+	}
+
+	.LabelAsHyperLink
+	{
+		color: blue;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	
+	.LabelAsTitle
+	{
+		color: black;
+		font-weight: bold;
+	}
+
+	
