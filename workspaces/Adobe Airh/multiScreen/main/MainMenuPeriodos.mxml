@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mx:Panel   name             = "MainMenuPeriodos"
+            xmlns:fx         = "http://ns.adobe.com/mxml/2009"
+			xmlns:sx         = "library://ns.adobe.com/flex/spark"
+			xmlns:mx         = "library://ns.adobe.com/flex/mx"
+            layout           = "absolute"
+			width            = "250"
+			height           = "400"
+			title            = "ADMINISTRACIÓN DE PERÍDOS"
+			cornerRadius     = "7"
+			creationComplete = "">
+
+    <fx:Script source="../scripts/MainMenuPeriodos.as" /> 
+
+	<fx:Style source="../styles/MainMenuPeriodos.css"/>
+	
+
+    <fx:Declarations> 
+		<mx:HTTPService id="dataRequest" url="http://mirhrh.appspot.com/AsistenciaCrudFindAllPerfilHorario?format=XML" useProxy="false" method="POST" resultFormat="e4x" showBusyCursor="true" /> 
+    </fx:Declarations>
+	
+	
+	<sx:Label text="Períodos Vigentes:" x="5" y="20" styleName="LabelAsTitle"/>
+	
+	<sx:List x="5" y="40" width="237" height="100" styleName="ListaPeriodosAbiertos"> 
+        <mx:ArrayCollection>
+            <fx:String>Mayo 2012</fx:String> 
+            <fx:String>Marzo 2012</fx:String> 
+            <fx:String>Febrero 2012</fx:String> 
+            <fx:String>Noviembre 2011</fx:String> 
+        </mx:ArrayCollection>
+    </sx:List>
+	
+	<sx:Label text="Ultimos Períodos Cerrados:" x="5" y="160" styleName="LabelAsTitle"/>
+	
+	<sx:List x="5" y="175" width="237" height="100" styleName="ListaPeriodosAbiertos"> 
+        <mx:ArrayCollection>
+            <fx:String>Abril 2012</fx:String> 
+            <fx:String>Enero 2012</fx:String> 
+            <fx:String>Diciembre 2011</fx:String> 
+            <fx:String>Octubre 2011</fx:String> 
+        </mx:ArrayCollection>
+    </sx:List>
+
+	<sx:Label text="Administrar Períodos" x="5" y="330" buttonMode="true" useHandCursor="true" mouseChildren="false" styleName="LabelAsHyperLink" />
+	
+</mx:Panel>
