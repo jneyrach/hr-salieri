@@ -160,7 +160,7 @@ public final class TipoDia extends BaseEntity<Long> {
 	}
 
 
-	private PerfilHorario() throws EntityAccessNotAllowedException {
+	private TipoDia() throws EntityAccessNotAllowedException {
 
 		super();
 	}

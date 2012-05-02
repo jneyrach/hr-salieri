@@ -14,8 +14,8 @@ public final class Periodo extends BaseEntity<Long> {
 	private String _desc;
 	private String _bitacora;
 	
-	private Data   _fechaInicio;
-	private Data   _fechaTermino;
+	private Date _fechaInicio;
+	private Date _fechaTermino;
 
 
     @XmlTransient
@@ -196,7 +196,7 @@ public final class Periodo extends BaseEntity<Long> {
 	}
 
 
-	private PerfilHorario() throws EntityAccessNotAllowedException {
+	private Periodo() throws EntityAccessNotAllowedException {
 
 		super();
 	}
