@@ -2,18 +2,13 @@ package sshr.asistencia.entity;
 
 import sshr.datamodel.jpa.BaseDataEntity;
 
-import java.util.Date;
-
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
+import java.io.*;
+import javax.persistence.*;
 
 
 @Entity
-public final class Periodo extends BaseDataEntity<sshr.domainmodel.asistencia.TipoDia> {
+public final class Periodo extends BaseDataEntity<sshr.domainmodel.asistencia.Periodo> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +16,10 @@ public final class Periodo extends BaseDataEntity<sshr.domainmodel.asistencia.Ti
 
 	private String _desc;
 	private String _nombre;
+	private String _bitacora;
 
-	private Data _fechaInicio;
-	private Data _fechaTermino;
+	private Date _fechaInicio;
+	private Date _fechaTermino;
 	private Date _createdOn;
 	private Date _updatedOn;
 
@@ -38,24 +34,35 @@ public final class Periodo extends BaseDataEntity<sshr.domainmodel.asistencia.Ti
 		return this._desc;
 	}
 
-	public String getCodigo() {
+	public String getBitacora() {
 
-		return this._codigo;
+		return this._bitacora;
 	}
 
 	public String getNombre() {
 
 		return this._nombre;
 	}
+	
+	public Date getFechaInicio() {
+	
+		return this._fechaInicio;
+	}
+	
+	public Date getFechaTermino() {
+	
+		return this._fechaTermino;
+	}
 
+	
 	public void setDesc(String desc) {
 
 		this._desc = desc;
 	}
 
-	public void setCodigo(String codigo) {
+	public void setBitacora(String bitacora) {
 
-		this._codigo = codigo;
+		this._bitacora = bitacora;
 	}
 
 	public void setNombre(String nombre) {
@@ -78,23 +85,33 @@ public final class Periodo extends BaseDataEntity<sshr.domainmodel.asistencia.Ti
         this._updatedOn = updatedOn;
     }
 
+    public void setFechaInicio(Date fechaInicio) {
 
+        this._fechaInicio = fechaInicio;
+    }
+
+    public void setFechaTermino(Date fechaTermino) {
+
+        this._fechaTermino = fechaTermino;
+    }
+
+	
 	@Override
-	public void autoPopulate(sshr.domainmodel.asistencia.TipoDia tdvo) {
+	public void autoPopulate(sshr.domainmodel.asistencia.Periodo tdvo) {
 
 		this._id        = tdvo.getID();
 		this._desc      = tdvo.getDesc();
-		this._codigo    = tdvo.getCodigo();
+		this._bitacora  = tdvo.getBitacora();
 		this._nombre    = tdvo.getNombre();
 		this._createdOn = tdvo.getCreatedOn();
 		this._updatedOn = tdvo.getUpdatedOn();
 	}
 
 	@Override
-	public sshr.domainmodel.asistencia.TipoDia reversePopulate(sshr.domainmodel.asistencia.TipoDia tdvo) {
+	public sshr.domainmodel.asistencia.Periodo reversePopulate(sshr.domainmodel.asistencia.Periodo tdvo) {
 
 		tdvo.setID(this._id);
-		tdvo.setCodigo(this._codigo);
+		tdvo.setBitacora(this._bitacora);
 		tdvo.setNombre(this._nombre);
 		tdvo.setDesc(this._desc);
 		tdvo.setCreatedOn(this._createdOn);

@@ -12,7 +12,8 @@
 	<path id="compile.classpath">
             <fileset dir="${gae.dir.lib}/">
                 <include name="**/*.jar"/>
-                <exclude name="tools/orm/*.jar"/>
+				<exclude name="opt/**"/>
+				<exclude name="tools/**"/>
             </fileset>
             <fileset dir="../dist-lib/">
                 <include name="**/*.jar"/>
