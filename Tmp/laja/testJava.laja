@@ -1,0 +1,76 @@
+#import "{.}/StringUtils.groovy"
+
+#set (className = "PeriodoAsistencia")
+#set (packageName = "sshr.domainmodel.asistencia")
+#set (importsSSHR = ["sshr.domainmodel.BaseEntity", "sshr.domainmodel.EntityAccessNotAllowedException"])
+#set (importsJava = ["java.util.*", "javax.xml.bind.annotation.*"])
+#set (idDataType = "Long")
+#set (properties = [{name: "ID"               dataType: "{idDataType}"},
+                    {name: "Nombre"           dataType: "String"},
+                    {name: "Descripcion"      dataType: "String"},
+                    {name: "Fecha de Inicio"  dataType: "Date"},
+                    {name: "Fecha de Termino" dataType: "Date"}
+                   ])
+#set (auxComma = "")
+#set (stringUtils = new TestClass())
+
+#write "{className}.java"
+    package {packageName};
+  
+    #foreach (import in importsSSHR)
+    import {import};
+    #end
+    
+    #foreach (import in importsJava)
+    import {import};
+    #end
+
+    #foreach (import in importsOther)
+    import {import};
+    #end
+
+    
+    @XmlRootElement
+    public final class {className} extends BaseEntity<{idDataType}> {
+
+        #foreach (field in properties)
+        private {field.dataType} {stringUtils.getPropertyDeclarationString(field.name)};
+        #end
+    
+    
+        @XmlTransient
+        public enum FIELDS {
+        
+            #foreach (field in properties)
+            {auxComma}{stringUtils.getFieldDeclarationString(field.name)}() {
+                public String getName() { return "{stringUtils.getPropertyDeclarationString(field.name)}"; }
+            }
+            #set (auxComma = ",")
+            #end
+            ;
+        }
+    
+        private {className}() throws EntityAccessNotAllowedException {
+
+            super();
+        }
+    
+        #foreach (field in properties)
+        
+        public {field.dataType} {stringUtils.getFieldGetterDeclarationString(field.name)}() {
+            
+            return this.{stringUtils.getPropertyDeclarationString(field.name)};
+        }
+        #end
+
+        
+        #foreach (field in properties)
+        
+        public void {stringUtils.getFieldSetterDeclarationString(field.name)}({field.dataType} newValue) {
+            
+            this.{stringUtils.getPropertyDeclarationString(field.name)} = newValue;
+        }
+        #end
+        
+    }
+#end

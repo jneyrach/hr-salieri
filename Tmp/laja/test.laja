@@ -1,0 +1,11 @@
+#set (listOfValues = [1,2,3])
+
+#write "test.txt"
+  #set (comma = "")
+  
+  #foreach (value in listOfValues)
+    {comma}{value}
+    #set (comma = ",")
+  #end
+
+#end
