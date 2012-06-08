@@ -1,17 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	     xmlns="http://java.sun.com/xml/ns/javaee" 
-		 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	     version="2.5">
-		 
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
 
-	<!--
-			CRUD SERVLETS - BEGIN
-	-->
 			<servlet>
 				<servlet-name>AsistenciaCrudCreatePerfilHorario</servlet-name>
 				<servlet-class>sshr.web.servlet.asistencia.CrudCreatePerfilHorario</servlet-class>
@@ -160,14 +147,5 @@
 				<servlet-name>AsistenciaCrudUpdateTipoDia</servlet-name>
 				<url-pattern>/AsistenciaCrudUpdateTipoDia</url-pattern>
 			</servlet-mapping>	
-	<!--
-			CRUD SERVLETS - END
-	-->
 
-	
-	
-	
-	
-	
-	
-</web-app>
+

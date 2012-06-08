@@ -1,0 +1,82 @@
+
+		public static PeriodoAsistencia createPeriodoAsistencia( String codigo, String nombre, String descripcion, Date fechaDeInicio, Date fechaDeTermino) throws AsistenciaException {
+		
+			try {
+					PeriodoAsistencia e = EntityFactory.getNewEntity(PeriodoAsistencia.class);
+                    e.setCodigo(codigo);
+                    e.setNombre(nombre);
+                    e.setDescripcion(descripcion);
+                    e.setFechaDeInicio(fechaDeInicio);
+                    e.setFechaDeTermino(fechaDeTermino);
+
+					e = _crudService.add( e );
+
+					if (e == null) 
+						throw new AsistenciaException("ERROR: Al tratar de crear un registro de la clase PeriodoAsistencia.");
+
+                        
+					return e;
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+	
+        
+		public static PeriodoAsistencia updatePeriodoAsistencia( Long id, String codigo, String nombre, String descripcion, Date fechaDeInicio, Date fechaDeTermino) throws AsistenciaException {
+		
+			try {
+					PeriodoAsistencia e = _crudService.find(PeriodoAsistencia.class, id);
+                    e.setCodigo(codigo);
+                    e.setNombre(nombre);
+                    e.setDescripcion(descripcion);
+                    e.setFechaDeInicio(fechaDeInicio);
+                    e.setFechaDeTermino(fechaDeTermino);
+					
+					e = _crudService.update( e );
+
+					if (e == null) 
+						throw new AsistenciaException("ERROR: Al tratar de actualizar un registro de la clase PeriodoAsistencia.");
+						
+						
+					return e;
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static List<PeriodoAsistencia> findAllPeriodoAsistencia() throws AsistenciaException {
+		
+			try {
+					return _crudService.findAll(PeriodoAsistencia.class);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static PeriodoAsistencia findPeriodoAsistencia(Long id) throws AsistenciaException {
+		
+			try {
+					return _crudService.find(PeriodoAsistencia.class, id);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static void removePeriodoAsistencia(Long id) throws AsistenciaException {
+		
+			try {
+					_crudService.remove(PeriodoAsistencia.class, id);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}

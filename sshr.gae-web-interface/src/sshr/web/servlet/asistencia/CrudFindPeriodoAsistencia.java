@@ -8,7 +8,7 @@
     import javax.servlet.http.*;
 
 
-    public class CrudFindPerfilHorario extends HttpServlet {
+    public class CrudFindPeriodoAsistencia extends HttpServlet {
 
         public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
@@ -31,7 +31,7 @@
             try {
                     Long id = Long.parseLong( request.getParameter("id") );
             
-                    PerfilHorario e = AsistenciaApplication.findPerfilHorario( id );
+                    PeriodoAsistencia e = AsistenciaApplication.findPeriodoAsistencia( id );
                 
             } catch (Exception ex) {
             

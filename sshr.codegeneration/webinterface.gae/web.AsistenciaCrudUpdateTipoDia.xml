@@ -1,0 +1,10 @@
+
+			<servlet>
+				<servlet-name>AsistenciaCrudUpdateTipoDia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudUpdateTipoDia</servlet-class>
+			</servlet>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudUpdateTipoDia</servlet-name>
+				<url-pattern>/AsistenciaCrudUpdateTipoDia</url-pattern>
+			</servlet-mapping>	
+

@@ -8,8 +8,8 @@
     import javax.servlet.http.*;
 
 
-    public class CrudFindPerfilHorario extends HttpServlet {
-
+    public class CrudRemovePeriodoAsistencia extends HttpServlet {
+	
         public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
             this.processRequest(request, response);
@@ -29,18 +29,21 @@
             PrintWriter out = response.getWriter();
             
             try {
-                    Long id = Long.parseLong( request.getParameter("id") );
-            
-                    PerfilHorario e = AsistenciaApplication.findPerfilHorario( id );
+                    Long id = Long.parseLong( request.getParameter("ID") );
                 
+                    AsistenciaApplication.removePeriodoAsistencia(id);
+                
+                    out.println("OK");
+            
             } catch (Exception ex) {
             
                         out.println("ERROR: " + ex.getMessage());
+                        ex.printStackTrace();
             }
             
             out.flush();
             out.close();
         }
 
-    }
-    
+}
+

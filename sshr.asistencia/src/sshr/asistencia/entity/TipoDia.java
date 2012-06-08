@@ -1,105 +1,86 @@
-package sshr.asistencia.entity;
-
-import sshr.datamodel.jpa.BaseDataEntity;
-
-import java.util.Date;
-
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+    package sshr.asistencia.entity;
+  
+    import sshr.datamodel.jpa.*;
+    
+    import java.util.*;
+    import java.io.*;
+    import javax.persistence.*;
 
 
-@Entity
-public final class TipoDia extends BaseDataEntity<sshr.domainmodel.asistencia.TipoDia> {
+    
+    @Entity
+    public final class TipoDia extends BaseDataEntity<sshr.domainmodel.asistencia.TipoDia> {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long _id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long _id;
+        private String _codigo;
+        private String _nombre;
+        private String _descripcion;
+    
+    
+        
+        public Long getId() {
+            
+            return this._id;
+        }
+        
+        public String getCodigo() {
+            
+            return this._codigo;
+        }
+        
+        public String getNombre() {
+            
+            return this._nombre;
+        }
+        
+        public String getDescripcion() {
+            
+            return this._descripcion;
+        }
 
-	private String _desc;
-	private String _codigo;
-	private String _nombre;
+        
+        
+        public void setId(Long newValue) {
+            
+            this._id = newValue;
+        }
+        
+        public void setCodigo(String newValue) {
+            
+            this._codigo = newValue;
+        }
+        
+        public void setNombre(String newValue) {
+            
+            this._nombre = newValue;
+        }
+        
+        public void setDescripcion(String newValue) {
+            
+            this._descripcion = newValue;
+        }
 
-	private Date _createdOn;
-	private Date _updatedOn;
+        
+        @Override
+        public void autoPopulate(sshr.domainmodel.asistencia.TipoDia tdvo) {
 
+            this._id = tdvo.getId();
+            this._codigo = tdvo.getCodigo();
+            this._nombre = tdvo.getNombre();
+            this._descripcion = tdvo.getDescripcion();
+        }
 
-	public Long getId() {
+        @Override
+        public sshr.domainmodel.asistencia.TipoDia reversePopulate(sshr.domainmodel.asistencia.TipoDia tdvo) {
 
-		return this._id;
-	}
+            tdvo.setId(this._id);
+            tdvo.setCodigo(this._codigo);
+            tdvo.setNombre(this._nombre);
+            tdvo.setDescripcion(this._descripcion);
 
-	public String getDesc() {
-
-		return this._desc;
-	}
-
-	public String getCodigo() {
-
-		return this._codigo;
-	}
-
-	public String getNombre() {
-
-		return this._nombre;
-	}
-
-	public void setDesc(String desc) {
-
-		this._desc = desc;
-	}
-
-	public void setCodigo(String codigo) {
-
-		this._codigo = codigo;
-	}
-
-	public void setNombre(String nombre) {
-
-		this._nombre = nombre;
-	}
-
-	public void setId(Long id) {
-
-		this._id = id;
-	}
-
-    public void setCreatedOn(Date createdOn) {
-
-        this._createdOn = createdOn;
+            return tdvo;
+        }
+        
     }
-
-    public void setUpdatedOn(Date updatedOn) {
-
-        this._updatedOn = updatedOn;
-    }
-
-
-	@Override
-	public void autoPopulate(sshr.domainmodel.asistencia.TipoDia tdvo) {
-
-		this._id        = tdvo.getID();
-		this._desc      = tdvo.getDesc();
-		this._codigo    = tdvo.getCodigo();
-		this._nombre    = tdvo.getNombre();
-		this._createdOn = tdvo.getCreatedOn();
-		this._updatedOn = tdvo.getUpdatedOn();
-	}
-
-	@Override
-	public sshr.domainmodel.asistencia.TipoDia reversePopulate(sshr.domainmodel.asistencia.TipoDia tdvo) {
-
-		tdvo.setID(this._id);
-		tdvo.setCodigo(this._codigo);
-		tdvo.setNombre(this._nombre);
-		tdvo.setDesc(this._desc);
-		tdvo.setCreatedOn(this._createdOn);
-		tdvo.setUpdatedOn(this._updatedOn);
-
-		return tdvo;
-	}
-
-}

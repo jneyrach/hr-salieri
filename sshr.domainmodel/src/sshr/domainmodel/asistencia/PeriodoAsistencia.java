@@ -9,12 +9,14 @@
 
     
     @XmlRootElement
-    public final class PerfilHorario extends BaseEntity<Long> {
+    public final class PeriodoAsistencia extends BaseEntity<Long> {
 
         private Long _id;
         private String _codigo;
         private String _nombre;
         private String _descripcion;
+        private Date _fechaDeInicio;
+        private Date _fechaDeTermino;
     
     
         @XmlTransient
@@ -32,10 +34,16 @@
             ,DESCRIPCION() {
                 public String getName() { return "_descripcion"; }
             }
+            ,FECHA_DE_INICIO() {
+                public String getName() { return "_fechaDeInicio"; }
+            }
+            ,FECHA_DE_TERMINO() {
+                public String getName() { return "_fechaDeTermino"; }
+            }
             ;
         }
     
-        private PerfilHorario() throws EntityAccessNotAllowedException {
+        private PeriodoAsistencia() throws EntityAccessNotAllowedException {
 
             super();
         }
@@ -60,6 +68,16 @@
             
             return this._descripcion;
         }
+        
+        public Date getFechaDeInicio() {
+            
+            return this._fechaDeInicio;
+        }
+        
+        public Date getFechaDeTermino() {
+            
+            return this._fechaDeTermino;
+        }
 
         
         
@@ -81,6 +99,16 @@
         public void setDescripcion(String newValue) {
             
             this._descripcion = newValue;
+        }
+        
+        public void setFechaDeInicio(Date newValue) {
+            
+            this._fechaDeInicio = newValue;
+        }
+        
+        public void setFechaDeTermino(Date newValue) {
+            
+            this._fechaDeTermino = newValue;
         }
         
     }

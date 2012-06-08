@@ -1,0 +1,107 @@
+#import "{..}/include/StringUtils.groovy"
+#import "{..}/include/PackageUtils.groovy"
+
+#set (projectName = "sshr")
+#set (className = "PerfilHorario")
+#set (packageName = "sshr.asistencia")
+#set (idDataType = "Long")
+#set (properties = [
+                    {name: "ID"               dataType: "{idDataType}"},
+                    {name: "Codigo"           dataType: "String"},
+                    {name: "Nombre"           dataType: "String"},
+                    {name: "Descripcion"      dataType: "String"}
+                   ])
+#set (auxComma = "")
+#set (stringUtils = new StringUtils())
+#set (packageUtils = new PackageUtils())
+#set (packageFolderName = packageUtils.createDirectoryPackage(packageName))
+#set (destinationDirectory = "../../{projectName}/src/{packageFolderName}/")
+#set (dir = new java.io.File(destinationDirectory))
+#set (a = dir.mkdirs())
+
+
+#write "{className}.txt"
+
+		public static {className} create{className}(#foreach (field in properties)#if (field.name != "ID"){auxComma} {field.dataType} {stringUtils.getParameterString(field.name)}#set (auxComma = ",")#end#end) throws AsistenciaException {
+		
+			try {
+					{className} e = EntityFactory.getNewEntity({className}.class);
+                    #foreach (field in properties)
+                    #if (field.name != "ID")
+                    e.{stringUtils.getFieldSetterDeclarationString(field.name)}({stringUtils.getParameterString(field.name)});
+                    #end
+                    #end
+
+					e = _crudService.add( e );
+
+					if (e == null) 
+						throw new AsistenciaException("ERROR: Al tratar de crear un registro de la clase {className}.");
+
+                        
+					return e;
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+	
+    #set (auxComma = "")
+        
+		public static {className} update{className}(#foreach (field in properties){auxComma} {field.dataType} {stringUtils.getParameterString(field.name)}#set (auxComma = ",")#end) throws AsistenciaException {
+		
+			try {
+					{className} e = _crudService.find({className}.class, id);
+                    #foreach (field in properties)
+                    #if (field.name != "ID")
+                    e.{stringUtils.getFieldSetterDeclarationString(field.name)}({stringUtils.getParameterString(field.name)});
+                    #end
+                    #end
+					
+					e = _crudService.update( e );
+
+					if (e == null) 
+						throw new AsistenciaException("ERROR: Al tratar de actualizar un registro de la clase {className}.");
+						
+						
+					return e;
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static List<{className}> findAll{className}() throws AsistenciaException {
+		
+			try {
+					return _crudService.findAll({className}.class);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static {className} find{className}(Long id) throws AsistenciaException {
+		
+			try {
+					return _crudService.find({className}.class, id);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static void remove{className}(Long id) throws AsistenciaException {
+		
+			try {
+					_crudService.remove({className}.class, id);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+#end

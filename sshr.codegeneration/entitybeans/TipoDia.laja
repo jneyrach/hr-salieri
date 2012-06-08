@@ -1,0 +1,91 @@
+#import "{..}/include/StringUtils.groovy"
+#import "{..}/include/PackageUtils.groovy"
+
+#set (projectName = "sshr.asistencia")
+#set (className = "TipoDia")
+#set (packageName = "sshr.asistencia.entity")
+#set (importsSSHR = ["sshr.datamodel.jpa.*"])
+#set (importsJava = ["java.util.*", "java.io.*", "javax.persistence.*"])
+#set (idDataType = "Long")
+#set (domainClass = "sshr.domainmodel.asistencia.TipoDia")
+#set (properties = [
+                    {name: "ID"               dataType: "{idDataType}"},
+                    {name: "Codigo"           dataType: "String"},
+                    {name: "Nombre"           dataType: "String"},
+                    {name: "Descripcion"      dataType: "String"}
+                   ])
+#set (auxComma = "")
+#set (stringUtils = new StringUtils())
+#set (packageUtils = new PackageUtils())
+#set (packageFolderName = packageUtils.createDirectoryPackage(packageName))
+#set (destinationDirectory = "../../{projectName}/src/{packageFolderName}/")
+#set (dir = new java.io.File(destinationDirectory))
+#set (a = dir.mkdirs())
+
+
+#write "{destinationDirectory}{className}.java"
+    package {packageName};
+  
+    #foreach (import in importsSSHR)
+    import {import};
+    #end
+    
+    #foreach (import in importsJava)
+    import {import};
+    #end
+
+    #foreach (import in importsOther)
+    import {import};
+    #end
+
+    
+    @Entity
+    public final class {className} extends BaseDataEntity<{domainClass}> {
+
+        #foreach (field in properties)
+        #if (field.name == "ID")
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        #end
+        private {field.dataType} {stringUtils.getPropertyDeclarationString(field.name)};
+        #end
+    
+    
+        #foreach (field in properties)
+        
+        public {field.dataType} {stringUtils.getFieldGetterDeclarationString(field.name)}() {
+            
+            return this.{stringUtils.getPropertyDeclarationString(field.name)};
+        }
+        #end
+
+        
+        #foreach (field in properties)
+        
+        public void {stringUtils.getFieldSetterDeclarationString(field.name)}({field.dataType} newValue) {
+            
+            this.{stringUtils.getPropertyDeclarationString(field.name)} = newValue;
+        }
+        #end
+
+        
+        @Override
+        public void autoPopulate({domainClass} tdvo) {
+
+            #foreach (field in properties)
+            this.{stringUtils.getPropertyDeclarationString(field.name)} = tdvo.{stringUtils.getFieldGetterDeclarationString(field.name)}();
+            #end
+        }
+
+        @Override
+        public {domainClass} reversePopulate({domainClass} tdvo) {
+
+            #foreach (field in properties)
+            tdvo.{stringUtils.getFieldSetterDeclarationString(field.name)}(this.{stringUtils.getPropertyDeclarationString(field.name)});
+            #end
+
+            return tdvo;
+        }
+        
+    }
+#end

@@ -9,7 +9,7 @@
 
     
     @Entity
-    public final class PerfilHorario extends BaseDataEntity<sshr.domainmodel.asistencia.PerfilHorario> {
+    public final class PeriodoAsistencia extends BaseDataEntity<sshr.domainmodel.asistencia.PeriodoAsistencia> {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,8 @@
         private String _codigo;
         private String _nombre;
         private String _descripcion;
+        private Date _fechaDeInicio;
+        private Date _fechaDeTermino;
     
     
         
@@ -38,6 +40,16 @@
         public String getDescripcion() {
             
             return this._descripcion;
+        }
+        
+        public Date getFechaDeInicio() {
+            
+            return this._fechaDeInicio;
+        }
+        
+        public Date getFechaDeTermino() {
+            
+            return this._fechaDeTermino;
         }
 
         
@@ -61,24 +73,38 @@
             
             this._descripcion = newValue;
         }
+        
+        public void setFechaDeInicio(Date newValue) {
+            
+            this._fechaDeInicio = newValue;
+        }
+        
+        public void setFechaDeTermino(Date newValue) {
+            
+            this._fechaDeTermino = newValue;
+        }
 
         
         @Override
-        public void autoPopulate(sshr.domainmodel.asistencia.PerfilHorario tdvo) {
+        public void autoPopulate(sshr.domainmodel.asistencia.PeriodoAsistencia tdvo) {
 
             this._id = tdvo.getId();
             this._codigo = tdvo.getCodigo();
             this._nombre = tdvo.getNombre();
             this._descripcion = tdvo.getDescripcion();
+            this._fechaDeInicio = tdvo.getFechaDeInicio();
+            this._fechaDeTermino = tdvo.getFechaDeTermino();
         }
 
         @Override
-        public sshr.domainmodel.asistencia.PerfilHorario reversePopulate(sshr.domainmodel.asistencia.PerfilHorario tdvo) {
+        public sshr.domainmodel.asistencia.PeriodoAsistencia reversePopulate(sshr.domainmodel.asistencia.PeriodoAsistencia tdvo) {
 
             tdvo.setId(this._id);
             tdvo.setCodigo(this._codigo);
             tdvo.setNombre(this._nombre);
             tdvo.setDescripcion(this._descripcion);
+            tdvo.setFechaDeInicio(this._fechaDeInicio);
+            tdvo.setFechaDeTermino(this._fechaDeTermino);
 
             return tdvo;
         }
