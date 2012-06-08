@@ -1,0 +1,78 @@
+
+		public static TipoDia createTipoDia( String codigo, String nombre, String descripcion) throws AsistenciaException {
+		
+			try {
+					TipoDia e = EntityFactory.getNewEntity(TipoDia.class);
+                    e.setCodigo(codigo);
+                    e.setNombre(nombre);
+                    e.setDescripcion(descripcion);
+
+					e = _crudService.add( e );
+
+					if (e == null) 
+						throw new AsistenciaException("ERROR: Al tratar de crear un registro de la clase TipoDia.");
+
+                        
+					return e;
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+	
+        
+		public static TipoDia updateTipoDia( Long id, String codigo, String nombre, String descripcion) throws AsistenciaException {
+		
+			try {
+					TipoDia e = _crudService.find(TipoDia.class, id);
+                    e.setCodigo(codigo);
+                    e.setNombre(nombre);
+                    e.setDescripcion(descripcion);
+					
+					e = _crudService.update( e );
+
+					if (e == null) 
+						throw new AsistenciaException("ERROR: Al tratar de actualizar un registro de la clase TipoDia.");
+						
+						
+					return e;
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static List<TipoDia> findAllTipoDia() throws AsistenciaException {
+		
+			try {
+					return _crudService.findAll(TipoDia.class);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static TipoDia findTipoDia(Long id) throws AsistenciaException {
+		
+			try {
+					return _crudService.find(TipoDia.class, id);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}
+
+		public static void removeTipoDia(Long id) throws AsistenciaException {
+		
+			try {
+					_crudService.remove(TipoDia.class, id);
+					
+			} catch (Exception ex) { 
+			
+						throw new AsistenciaException("An error has occurred, please review the log.", ex);
+			}
+		}

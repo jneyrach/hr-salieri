@@ -1,0 +1,10 @@
+
+			<servlet>
+				<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudFindAllPerfilHorario</servlet-class>
+			</servlet>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudFindAllPerfilHorario</servlet-name>
+				<url-pattern>/AsistenciaCrudFindAllPerfilHorario</url-pattern>
+			</servlet-mapping>	
+

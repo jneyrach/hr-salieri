@@ -1,0 +1,90 @@
+#import "{..}/include/StringUtils.groovy"
+#import "{..}/include/PackageUtils.groovy"
+
+#set (applicationName = "Asistencia")
+#set (projectName = "sshr.gae-web-interface")
+#set (domainClassName = "PeriodoAsistencia")
+#set (className = "CrudFindAll{domainClassName}")
+#set (packageName = "sshr.web.servlet.asistencia")
+#set (importsSSHR = ["sshr.domainmodel.asistencia.*", "sshr.asistencia.*"])
+#set (importsJava = ["java.io.*", "javax.servlet.http.*"])
+#set (stringUtils = new StringUtils())
+#set (packageUtils = new PackageUtils())
+#set (packageFolderName = packageUtils.createDirectoryPackage(packageName))
+#set (destinationDirectory = "../../{projectName}/src/{packageFolderName}/")
+#set (dir = new java.io.File(destinationDirectory))
+#set (a = dir.mkdirs())
+#set (idDataType = "Long")
+
+#write "{destinationDirectory}{className}.java"
+
+    package {packageName};
+
+    #foreach (import in importsSSHR)
+    import {import};
+    #end
+    
+    #foreach (import in importsJava)
+    import {import};
+    #end
+
+    #foreach (import in importsOther)
+    import {import};
+    #end
+
+    public class {className} extends HttpServlet {
+
+        public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+            this.processRequest(request, response);
+        }
+
+        public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+            this.processRequest(request, response);
+        }
+
+        public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+            response.setHeader("Pragma", "No-cache");
+            response.setHeader("Cache-Control", "no-cache,no-store,max-age=0");
+            response.setDateHeader("Expires", 1);
+            response.setContentType("text/xml");
+            PrintWriter out = response.getWriter();
+
+            try {
+                    List<{domainClassName}> l = AsistenciaApplication.findAll{domainClassName}();
+
+
+                    if (request.getParameter("format").equals("XML")) {
+
+                            CrudTransferObject<{domainClassName}> to = new CrudTransferObject<{domainClassName}>();
+                            to.setXmlDataRows(l);
+                    }
+
+
+            } catch (Exception ex) {
+
+                        out.println("ERROR: " + ex.getMessage());
+            }
+
+            out.flush();
+            out.close();
+        }
+
+    }
+    
+#end
+
+#write "web.{applicationName}{className}.xml"
+
+			<servlet>
+				<servlet-name>{applicationName}{className}</servlet-name>
+				<servlet-class>{packageName}.{className}</servlet-class>
+			</servlet>
+			<servlet-mapping>
+				<servlet-name>{applicationName}{className}</servlet-name>
+				<url-pattern>/{applicationName}{className}</url-pattern>
+			</servlet-mapping>	
+
+#end

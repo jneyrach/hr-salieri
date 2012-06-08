@@ -1,0 +1,10 @@
+
+			<servlet>
+				<servlet-name>AsistenciaCrudFindPeriodoAsistencia</servlet-name>
+				<servlet-class>sshr.web.servlet.asistencia.CrudFindPeriodoAsistencia</servlet-class>
+			</servlet>
+			<servlet-mapping>
+				<servlet-name>AsistenciaCrudFindPeriodoAsistencia</servlet-name>
+				<url-pattern>/AsistenciaCrudFindPeriodoAsistencia</url-pattern>
+			</servlet-mapping>	
+
