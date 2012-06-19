@@ -1,4 +1,4 @@
-package sshr.eventmodel;
+package sshr.eventmodel.logging;
 
 
 public interface EventWrapper <T extends Throwable, U extends Enum<?>> {
