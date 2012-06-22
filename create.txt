@@ -1,5 +1,6 @@
-http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Bandera - Guardias&codigo=BANGUA
-http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Bandera - Vendedores&codigo=BANVEN
-http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Alameda 1 - Guardias&codigo=AL1GUA
-http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Alameda 1 - Vendedores&codigo=AL1NVEN
-http://localhost:8080/AsistenciaCrudCreateGrupoHorario?desc=Grupo Genérico&codigo=GRPGEN
+http://localhost:8080/AsistenciaCrudCreatePerfilHorario?nombre=Bandera - Guardias&descripcion=Bandera - Guardias&codigo=BANGUA
+http://localhost:8080/AsistenciaCrudCreatePerfilHorario?nombre=Bandera - Vendedores&descripcion=Bandera - Vendedores&codigo=BANVEN
+http://localhost:8080/AsistenciaCrudCreatePerfilHorario?nombre=Alameda 1 - Guardias&descripcion=Alameda 1 - Guardias&codigo=AL1GUA
+http://localhost:8080/AsistenciaCrudCreatePerfilHorario?nombre=Alameda 1 - Vendedores&descripcion=Alameda 1 - Vendedores&codigo=AL1NVEN
+http://localhost:8080/AsistenciaCrudCreatePerfilHorario?nombre=Perfil Genérico&descripcion=Perfil Genérico&codigo=PERFGEN
+http://localhost:8080/AsistenciaCrudFindAllPerfilHorario?format=XML

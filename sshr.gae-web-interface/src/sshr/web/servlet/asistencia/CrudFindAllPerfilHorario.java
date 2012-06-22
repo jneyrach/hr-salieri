@@ -37,6 +37,8 @@
 
                             CrudTransferObject<PerfilHorario> to = new CrudTransferObject<PerfilHorario>();
                             to.setXmlDataRows(l);
+                            
+                            out.println( CrudXMLHelper.marshal(to) );
                     }
 
 

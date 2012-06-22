@@ -60,6 +60,8 @@
 
                             CrudTransferObject<{domainClassName}> to = new CrudTransferObject<{domainClassName}>();
                             to.setXmlDataRows(l);
+                            
+                            out.println( CrudXMLHelper.marshal(to) );
                     }
 
 

@@ -37,6 +37,8 @@
 
                             CrudTransferObject<TipoDia> to = new CrudTransferObject<TipoDia>();
                             to.setXmlDataRows(l);
+                            
+                            out.println( CrudXMLHelper.marshal(to) );
                     }
 
 
