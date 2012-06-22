@@ -12,7 +12,9 @@
                     {name: "ID"               dataType: "{idDataType}"},
                     {name: "Codigo"           dataType: "String"},
                     {name: "Nombre"           dataType: "String"},
-                    {name: "Descripcion"      dataType: "String"}
+                    {name: "Descripcion"      dataType: "String"},
+                    {name: "Updated On"       dataType: "Date"},
+                    {name: "Created On"       dataType: "Date"}
                    ])
 #set (auxComma = "")
 #set (stringUtils = new StringUtils())

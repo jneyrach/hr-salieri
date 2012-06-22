@@ -14,7 +14,9 @@
                     {name: "Nombre"           dataType: "String"},
                     {name: "Descripcion"      dataType: "String"},
                     {name: "Fecha de Inicio"  dataType: "Date"},
-                    {name: "Fecha de Termino" dataType: "Date"}
+                    {name: "Fecha de Termino" dataType: "Date"},
+                    {name: "Updated On"       dataType: "Date"},
+                    {name: "Created On"       dataType: "Date"}
                    ])
 #set (auxComma = "")
 #set (stringUtils = new StringUtils())

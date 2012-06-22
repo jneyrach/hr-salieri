@@ -6,8 +6,8 @@
 #set (domainClassName = "PeriodoAsistencia")
 #set (className = "CrudCreate{domainClassName}")
 #set (packageName = "sshr.web.servlet.asistencia")
-#set (importsSSHR = ["sshr.domainmodel.asistencia.*", "sshr.asistencia.*"])
-#set (importsJava = ["java.io.*", "javax.servlet.http.*"])
+#set (importsSSHR = ["sshr.domainmodel.asistencia.*", "sshr.asistencia.*", "sshr.domainmodel.util.*"])
+#set (importsJava = ["java.util.*", "java.io.*", "javax.servlet.http.*"])
 #set (stringUtils = new StringUtils())
 #set (packageUtils = new PackageUtils())
 #set (packageFolderName = packageUtils.createDirectoryPackage(packageName))
@@ -64,7 +64,7 @@
             
             #foreach (field in properties)
             #if (field.name != "ID")
-            String {stringUtils.getParameterString(field.name)} = request.getParameter("{stringUtils.getParameterString(field.name)}");
+            {field.dataType} {stringUtils.getParameterString(field.name)} = ({field.dataType})ParseAndValidationUtils.parseParameterFromString( request.getParameter("{stringUtils.getParameterString(field.name)}"), {field.dataType}.class );
             #end
             #end
         

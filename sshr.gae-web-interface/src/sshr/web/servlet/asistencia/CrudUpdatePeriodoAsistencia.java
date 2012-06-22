@@ -3,7 +3,9 @@
 
     import sshr.domainmodel.asistencia.*;
     import sshr.asistencia.*;
+    import sshr.domainmodel.util.*;
     
+    import java.util.*;
     import java.io.*;
     import javax.servlet.http.*;
 
@@ -37,7 +39,7 @@
                 
                     Long id = Long.parseLong( request.getParameter("ID") );
                 
-                    AsistenciaApplication.updatePeriodoAsistencia(id,codigo,nombre,descripcion,fechaDeInicio,fechaDeTermino);
+                    AsistenciaApplication.updatePeriodoAsistencia(id,(String)ParseAndValidationUtils.parseParameterFromString( request.getParameter("codigo"), String.class ),(String)ParseAndValidationUtils.parseParameterFromString( request.getParameter("nombre"), String.class ),(String)ParseAndValidationUtils.parseParameterFromString( request.getParameter("descripcion"), String.class ),(Date)ParseAndValidationUtils.parseParameterFromString( request.getParameter("fechaDeInicio"), Date.class ),(Date)ParseAndValidationUtils.parseParameterFromString( request.getParameter("fechaDeTermino"), Date.class ));
                 
                     out.println("OK");
             

@@ -7,7 +7,7 @@
 #set (className = "CrudFindAll{domainClassName}")
 #set (packageName = "sshr.web.servlet.asistencia")
 #set (importsSSHR = ["sshr.domainmodel.asistencia.*", "sshr.asistencia.*"])
-#set (importsJava = ["java.io.*", "javax.servlet.http.*"])
+#set (importsJava = ["java.util.*", "java.io.*", "javax.servlet.http.*"])
 #set (stringUtils = new StringUtils())
 #set (packageUtils = new PackageUtils())
 #set (packageFolderName = packageUtils.createDirectoryPackage(packageName))
