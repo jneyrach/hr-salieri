@@ -38,6 +38,8 @@
 
                             CrudTransferObject<PeriodoAsistencia> to = new CrudTransferObject<PeriodoAsistencia>();
                             to.setXmlDataRows(l);
+                            
+                            out.println( CrudXMLHelper.marshal(to) );
                     }
 
 
