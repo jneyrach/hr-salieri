@@ -17,6 +17,8 @@
         private String _codigo;
         private String _nombre;
         private String _descripcion;
+        private Date _updatedOn;
+        private Date _createdOn;
     
     
         
@@ -38,6 +40,16 @@
         public String getDescripcion() {
             
             return this._descripcion;
+        }
+        
+        public Date getUpdatedOn() {
+            
+            return this._updatedOn;
+        }
+        
+        public Date getCreatedOn() {
+            
+            return this._createdOn;
         }
 
         
@@ -61,6 +73,16 @@
             
             this._descripcion = newValue;
         }
+        
+        public void setUpdatedOn(Date newValue) {
+            
+            this._updatedOn = newValue;
+        }
+        
+        public void setCreatedOn(Date newValue) {
+            
+            this._createdOn = newValue;
+        }
 
         
         @Override
@@ -70,6 +92,8 @@
             this._codigo = tdvo.getCodigo();
             this._nombre = tdvo.getNombre();
             this._descripcion = tdvo.getDescripcion();
+            this._updatedOn = tdvo.getUpdatedOn();
+            this._createdOn = tdvo.getCreatedOn();
         }
 
         @Override
@@ -79,6 +103,8 @@
             tdvo.setCodigo(this._codigo);
             tdvo.setNombre(this._nombre);
             tdvo.setDescripcion(this._descripcion);
+            tdvo.setUpdatedOn(this._updatedOn);
+            tdvo.setCreatedOn(this._createdOn);
 
             return tdvo;
         }

@@ -6,7 +6,7 @@
 #set (domainClassName = "PeriodoAsistencia")
 #set (className = "CrudRemove{domainClassName}")
 #set (packageName = "sshr.web.servlet.asistencia")
-#set (importsSSHR = ["sshr.domainmodel.asistencia.*", "sshr.asistencia.*"])
+#set (importsSSHR = ["sshr.domainmodel.asistencia.*", "sshr.asistencia.*", "sshr.domainmodel.util.*"])
 #set (importsJava = ["java.io.*", "javax.servlet.http.*"])
 #set (stringUtils = new StringUtils())
 #set (packageUtils = new PackageUtils())

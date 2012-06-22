@@ -3,7 +3,9 @@
 
     import sshr.domainmodel.asistencia.*;
     import sshr.asistencia.*;
+    import sshr.domainmodel.util.*;
     
+    import java.util.*;
     import java.io.*;
     import javax.servlet.http.*;
 
@@ -29,11 +31,11 @@
             PrintWriter out = response.getWriter();
             
             
-            String codigo = request.getParameter("codigo");
-            String nombre = request.getParameter("nombre");
-            String descripcion = request.getParameter("descripcion");
-            String fechaDeInicio = request.getParameter("fechaDeInicio");
-            String fechaDeTermino = request.getParameter("fechaDeTermino");
+            String codigo = (String)ParseAndValidationUtils.parseParameterFromString( request.getParameter("codigo"), String.class );
+            String nombre = (String)ParseAndValidationUtils.parseParameterFromString( request.getParameter("nombre"), String.class );
+            String descripcion = (String)ParseAndValidationUtils.parseParameterFromString( request.getParameter("descripcion"), String.class );
+            Date fechaDeInicio = (Date)ParseAndValidationUtils.parseParameterFromString( request.getParameter("fechaDeInicio"), Date.class );
+            Date fechaDeTermino = (Date)ParseAndValidationUtils.parseParameterFromString( request.getParameter("fechaDeTermino"), Date.class );
         
             try {
                     AsistenciaApplication.createPeriodoAsistencia(codigo,nombre,descripcion,fechaDeInicio,fechaDeTermino);

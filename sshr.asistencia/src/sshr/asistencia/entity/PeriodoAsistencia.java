@@ -19,6 +19,8 @@
         private String _descripcion;
         private Date _fechaDeInicio;
         private Date _fechaDeTermino;
+        private Date _updatedOn;
+        private Date _createdOn;
     
     
         
@@ -50,6 +52,16 @@
         public Date getFechaDeTermino() {
             
             return this._fechaDeTermino;
+        }
+        
+        public Date getUpdatedOn() {
+            
+            return this._updatedOn;
+        }
+        
+        public Date getCreatedOn() {
+            
+            return this._createdOn;
         }
 
         
@@ -83,6 +95,16 @@
             
             this._fechaDeTermino = newValue;
         }
+        
+        public void setUpdatedOn(Date newValue) {
+            
+            this._updatedOn = newValue;
+        }
+        
+        public void setCreatedOn(Date newValue) {
+            
+            this._createdOn = newValue;
+        }
 
         
         @Override
@@ -94,6 +116,8 @@
             this._descripcion = tdvo.getDescripcion();
             this._fechaDeInicio = tdvo.getFechaDeInicio();
             this._fechaDeTermino = tdvo.getFechaDeTermino();
+            this._updatedOn = tdvo.getUpdatedOn();
+            this._createdOn = tdvo.getCreatedOn();
         }
 
         @Override
@@ -105,6 +129,8 @@
             tdvo.setDescripcion(this._descripcion);
             tdvo.setFechaDeInicio(this._fechaDeInicio);
             tdvo.setFechaDeTermino(this._fechaDeTermino);
+            tdvo.setUpdatedOn(this._updatedOn);
+            tdvo.setCreatedOn(this._createdOn);
 
             return tdvo;
         }
